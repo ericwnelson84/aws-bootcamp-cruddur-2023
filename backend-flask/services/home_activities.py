@@ -1,6 +1,10 @@
 from datetime import datetime, timedelta, timezone
+import logging
+
 class HomeActivities:
-  def run():
+  def run(logger):
+    # logger.info("HomeActivities") turn off to save money reporting to cloud watch. to reactivate
+    # need to pass "logger" as input to run() above
     now = datetime.now(timezone.utc).astimezone()
     results = [{
       'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
