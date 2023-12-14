@@ -45,8 +45,7 @@ const checkAuth = async () => {
     // If set to true, this call will send a 
     // request to Cognito to get the latest user data
     bypassCache: false 
-  })
-  .then((user) => {
+  }).then((user) => {
     console.log('user',user);
     return Amplify.currentAuthenticatedUser()
   }).then((cognito_user) => {
