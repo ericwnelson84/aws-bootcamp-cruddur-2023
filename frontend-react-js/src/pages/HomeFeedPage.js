@@ -5,7 +5,7 @@ import React from "react";
 // import { Amplify } from 'aws-amplify';
 // import { Auth } from "aws-amplify/auth";
 import { getCurrentUser } from 'aws-amplify/auth';
-import { Amplify, Auth } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 
 import DesktopNavigation  from '../components/DesktopNavigation';
 import DesktopSidebar     from '../components/DesktopSidebar';
@@ -40,27 +40,27 @@ export default function HomeFeedPage() {
   };
 
   // below is code I added from the amplify docs
-  async function currentAuthenticatedUser() {
-    try {
-      const { username, userId, signInDetails } = await getCurrentUser();
-      console.log(`The username: ${username}`);
-      console.log(`The userId: ${userId}`);
-      console.log(`The signInDetails: ${signInDetails}`);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  // async function currentAuthenticatedUser() {
+  //   try {
+  //     const { username, userId, signInDetails } = await getCurrentUser();
+  //     console.log(`The username: ${username}`);
+  //     console.log(`The userId: ${userId}`);
+  //     console.log(`The signInDetails: ${signInDetails}`);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
 
 // check if we are authenicated
 const checkAuth = async () => {
-  currentAuthenticatedUser({
+  Auth.currentAuthenticatedUser({
     // Optional, By default is false. 
     // If set to true, this call will send a 
     // request to Cognito to get the latest user data
     bypassCache: false 
   }).then((user) => {
     console.log('user',user);
-    return currentAuthenticatedUser()
+    return Auth.currentAuthenticatedUser()
   }).then((cognito_user) => {
       setUser({
         display_name: cognito_user.attributes.name,

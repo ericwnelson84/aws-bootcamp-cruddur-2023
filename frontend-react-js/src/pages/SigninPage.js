@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 // import { Amplify } from 'aws-amplify';
 // import { Auth } from "aws-amplify";
 // import { signIn } from 'aws-amplify/auth';
-import { Amplify, Auth } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 
 export default function SigninPage() {
 
