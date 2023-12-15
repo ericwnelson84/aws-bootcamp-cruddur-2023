@@ -35,19 +35,6 @@ Amplify.configure({
 }
 });
 
-// Amplify.configure({
-//   "aws_project_region": 'us-east-1',
-//   "aws_cognito_region": 'us-east-1',
-//   "aws_user_pools_id": 'us-east-1_zPtv18Dmu',
-//   "aws_user_pools_web_client_id": '4bbopnb0bqsftnhbciv7vm3jmm',
-//   "oauth": {},
-//     Auth: {
-//       region: 'us-east-1',
-//       userPoolId: 'us-east-1_zPtv18Dmu',
-//       userPoolClientId: '4bbopnb0bqsftnhbciv7vm3jmm'
-//   }
-//   });
-
 
 const router = createBrowserRouter([
   {

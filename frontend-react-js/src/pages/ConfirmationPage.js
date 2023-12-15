@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import {ReactComponent as Logo} from '../components/svg/logo.svg';
 
 // [TODO] Authenication
-import { Amplify } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 
 export default function ConfirmationPage() {
   const [email, setEmail] = React.useState('');
