@@ -16,24 +16,42 @@ import {
   RouterProvider
 } from "react-router-dom";
 
+// import { Amplify } from 'aws-amplify';
 import { Amplify } from 'aws-amplify';
-import { Auth } from "aws-amplify";
 
-// below removed from .configure arguments
-// "AWS_PROJECT_REGION": process.env.REACT_APP_AWS_PROJECT_REGION,
+
+// Amplify.configure({
+// "aws_project_region": process.env.REACT_APP_AWS_PROJECT_REGION,
 // "aws_cognito_region": process.env.REACT_APP_AWS_COGNITO_REGION,
 // "aws_user_pools_id": process.env.REACT_APP_AWS_USER_POOLS_ID,
 // "aws_user_pools_web_client_id": process.env.REACT_APP_CLIENT_ID,
+// "oauth": {},
+//   Auth: {
+//     Cognito: {
+//       region: process.env.REACT_APP_AWS_PROJECT_REGION,
+//       userPoolId: process.env.REACT_APP_AWS_USER_POOLS_ID,
+//       userPoolWebClientId: process.env.REACT_APP_CLIENT_ID,
+//   }
+// }
+// });
+
+// "aws_project_region": 'us-east-1',
+// "aws_cognito_region": 'us-east-1',
+// "aws_user_pools_id": 'us-east-1_5iSLh7Ya3',
+// "aws_user_pools_web_client_id": '3ir5riagbquhsrpbqi16ui3b99',
 
 Amplify.configure({
-  Auth: {
-    Cognito: {
-      region: process.env.REACT_APP_AWS_PROJECT_REGION,
-      userPoolId: process.env.REACT_APP_AWS_USER_POOLS_ID,
-      userPoolWebClientId: process.env.REACT_APP_CLIENT_ID,
+
+  "oauth": {},
+    Auth: {
+      Cognito: {
+        region: 'us-east-1',
+        userPoolId: 'us-east-1_zPtv18Dmu',
+        userPoolClientId: '4bbopnb0bqsftnhbciv7vm3jmm'
+    }
   }
-}
-});
+  });
+
 
 const router = createBrowserRouter([
   {
