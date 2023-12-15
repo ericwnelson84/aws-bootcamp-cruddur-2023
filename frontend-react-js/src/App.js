@@ -20,38 +20,33 @@ import {
 import { Amplify } from 'aws-amplify';
 
 
-// Amplify.configure({
-// "aws_project_region": process.env.REACT_APP_AWS_PROJECT_REGION,
-// "aws_cognito_region": process.env.REACT_APP_AWS_COGNITO_REGION,
-// "aws_user_pools_id": process.env.REACT_APP_AWS_USER_POOLS_ID,
-// "aws_user_pools_web_client_id": process.env.REACT_APP_CLIENT_ID,
-// "oauth": {},
-//   Auth: {
-//     Cognito: {
-//       region: process.env.REACT_APP_AWS_PROJECT_REGION,
-//       userPoolId: process.env.REACT_APP_AWS_USER_POOLS_ID,
-//       userPoolWebClientId: process.env.REACT_APP_CLIENT_ID,
-//   }
-// }
-// });
-
-// "aws_project_region": 'us-east-1',
-// "aws_cognito_region": 'us-east-1',
-// "aws_user_pools_id": 'us-east-1_5iSLh7Ya3',
-// "aws_user_pools_web_client_id": '3ir5riagbquhsrpbqi16ui3b99',
-
 Amplify.configure({
-  "aws_project_region": 'us-east-1',
-  "aws_cognito_region": 'us-east-1',
-  "aws_user_pools_id": 'us-east-1_zPtv18Dmu',
-  "aws_user_pools_web_client_id": '4bbopnb0bqsftnhbciv7vm3jmm',
-  "oauth": {},
-    Auth: {
-      region: 'us-east-1',
-      userPoolId: 'us-east-1_zPtv18Dmu',
-      userPoolClientId: '4bbopnb0bqsftnhbciv7vm3jmm'
+"aws_project_region": process.env.REACT_APP_AWS_PROJECT_REGION,
+"aws_cognito_region": process.env.REACT_APP_AWS_COGNITO_REGION,
+"aws_user_pools_id": process.env.REACT_APP_AWS_USER_POOLS_ID,
+"aws_user_pools_web_client_id": process.env.REACT_APP_CLIENT_ID,
+"oauth": {},
+  Auth: {
+    Cognito: {
+      region: process.env.REACT_APP_AWS_PROJECT_REGION,
+      userPoolId: process.env.REACT_APP_AWS_USER_POOLS_ID,
+      userPoolClientId: process.env.REACT_APP_CLIENT_ID,
   }
-  });
+}
+});
+
+// Amplify.configure({
+//   "aws_project_region": 'us-east-1',
+//   "aws_cognito_region": 'us-east-1',
+//   "aws_user_pools_id": 'us-east-1_zPtv18Dmu',
+//   "aws_user_pools_web_client_id": '4bbopnb0bqsftnhbciv7vm3jmm',
+//   "oauth": {},
+//     Auth: {
+//       region: 'us-east-1',
+//       userPoolId: 'us-east-1_zPtv18Dmu',
+//       userPoolClientId: '4bbopnb0bqsftnhbciv7vm3jmm'
+//   }
+//   });
 
 
 const router = createBrowserRouter([
