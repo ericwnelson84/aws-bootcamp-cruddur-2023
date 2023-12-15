@@ -4,7 +4,7 @@ import React from "react";
 // [TODO] Authenication
 // import { Amplify } from 'aws-amplify';
 // import { Auth } from "aws-amplify/auth";
-import { getCurrentUser } from 'aws-amplify/auth';
+// import { getCurrentUser } from 'aws-amplify/auth';
 import { Auth } from 'aws-amplify';
 
 import DesktopNavigation  from '../components/DesktopNavigation';
@@ -39,17 +39,6 @@ export default function HomeFeedPage() {
     }
   };
 
-  // below is code I added from the amplify docs
-  // async function currentAuthenticatedUser() {
-  //   try {
-  //     const { username, userId, signInDetails } = await getCurrentUser();
-  //     console.log(`The username: ${username}`);
-  //     console.log(`The userId: ${userId}`);
-  //     console.log(`The signInDetails: ${signInDetails}`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
 
 // check if we are authenicated
 const checkAuth = async () => {

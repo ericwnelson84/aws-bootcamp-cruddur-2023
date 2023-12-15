@@ -4,9 +4,6 @@ import {ReactComponent as Logo} from '../components/svg/logo.svg';
 import { Link } from "react-router-dom";
 
 // [TODO] Authenication
-// import { Amplify } from 'aws-amplify';
-// import { Auth } from "aws-amplify";
-// import { signIn } from 'aws-amplify/auth';
 import { Auth } from 'aws-amplify';
 
 export default function SigninPage() {
@@ -93,3 +90,4 @@ export default function SigninPage() {
     </article>
   );
 }
+
