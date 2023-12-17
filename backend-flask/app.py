@@ -38,11 +38,11 @@ LOGGER.addHandler(console_handler)
 LOGGER.addHandler(cw_handler)
 LOGGER.info('test log')
 
-
 # xray
 xray_url = os.getenv("AWS_XRAY_URL")
 xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
 
+from lib.cognito_token_verification import CognitoTokenVerification
 
 # Honeycomb -----
 from opentelemetry import trace
@@ -62,6 +62,8 @@ tracer = trace.get_tracer(__name__)
 
 
 app = Flask(__name__)
+
+cognito_verification_token = CognitoTokenVerification()
 
 # xray
 XRayMiddleware(app, xray_recorder)
