@@ -177,7 +177,7 @@ def data_home():
     app.logger.debug("Unauthenticated")
     app.logger.debug(access_token)
     app.logger.debug(e)
-    data = HomeActivities.run(cognito_user_id=None)
+    data = HomeActivities.run(cognito_user_id="")
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])

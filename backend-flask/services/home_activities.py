@@ -2,7 +2,7 @@ from datetime import datetime, timedelta, timezone
 import logging
 
 class HomeActivities:
-  def run(cognito_user_id=""):
+  def run(cognito_user_id):
     # logger.info("HomeActivities")
     now = datetime.now(timezone.utc).astimezone()
     results = [{
