@@ -8,18 +8,18 @@ class HomeActivities:
     # logger.info("HomeActivities")
     now = datetime.now(timezone.utc).astimezone()
 
-
-
-  sql = """
-  SELECT * FROM activities
-  """
-  print(sql)
-  with pool.connection() as conn:
-    with conn.cursor() as cur:
-      cur.execute(sql)
-      # this will return a tuple
-      # the first field being the data
-      json = cur.fetchall()
-  return json[0]
+    sql = """
+    SELECT * FROM activities
+    """
+    print(sql)
+    with pool.connection() as conn:
+      with conn.cursor() as cur:
+        cur.execute(sql)
+        # this will return a tuple
+        # the first field being the data
+        json = cur.fetchone()
+    print("testing-----------------")
+    print(cur.fetchone)
+    return cur.fetchone
 
 
