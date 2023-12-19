@@ -7,7 +7,6 @@ class HomeActivities:
   def run(cognito_user_id):
     # logger.info("HomeActivities")
     now = datetime.now(timezone.utc).astimezone()
-    print("testing 1111111111")
     sql = query_wrap_array("""
     SELECT * FROM activities
     """)
