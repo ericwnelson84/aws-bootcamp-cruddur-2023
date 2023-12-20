@@ -1,5 +1,7 @@
 import uuid
 from datetime import datetime, timedelta, timezone
+
+
 class CreateActivity:
   def run(message, user_handle, ttl):
     model = {
@@ -64,8 +66,14 @@ class CreateActivity:
         "{expires_at}"
       )
       """
-      with pool.connection() as conn:
-        with conn.cursor() as cur:
-          cur.execute(sql)
+      try:
+        conn = pool.connection()
+        cur = conn.cursor()
+        cur.excecute(sql)
+        conn.commit()
+      except Exception as error:
+        print(error)
 
-          
+
+
+
