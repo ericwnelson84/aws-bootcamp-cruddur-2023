@@ -3,7 +3,7 @@ import React from "react";
 
 import DesktopNavigation  from '../components/DesktopNavigation';
 import MessageGroupFeed from '../components/MessageGroupFeed';
-import checkAuth from '../lib/CheckAuth';
+// import checkAuth from '../lib/CheckAuth';
 
 export default function MessageGroupsPage() {
   const [messageGroups, setMessageGroups] = React.useState([]);
@@ -37,7 +37,7 @@ export default function MessageGroupsPage() {
     dataFetchedRef.current = true;
 
     loadData();
-    checkAuth(setUser);
+    // checkAuth(setUser);
   }, [])
   return (
     <article>
