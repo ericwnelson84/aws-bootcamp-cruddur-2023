@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime, timedelta, timezone
 
-from lib.db import pool, print_sql_err
+from lib.db import db
 
 
 class CreateActivity:
@@ -68,15 +68,10 @@ class CreateActivity:
         "{expires_at}"
       )
       """
-      try:
-        conn = pool.connection()
-        cur = conn.cursor()
-        cur.excecute(sql)
-        conn.commit()
-      except Exception as err:
-        print_sql_err(err)
+      query_commit(sql)
 
-        
+
+
 
 
 
