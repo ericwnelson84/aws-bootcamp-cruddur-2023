@@ -40,6 +40,7 @@ class Db:
     no_color = '\033[0m'
     print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
     print(sql,params)
+    # be sure to check for returning in all uppercase
   def query_commit(self,sql,params={}):
     self.print_sql('commit with returning',sql,params)
 
