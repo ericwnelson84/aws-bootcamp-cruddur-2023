@@ -2,9 +2,6 @@ import './HomeFeedPage.css';
 import React from "react";
 
 // [TODO] Authenication
-// import { Amplify } from 'aws-amplify';
-// import { Auth } from "aws-amplify/auth";
-// import { getCurrentUser } from 'aws-amplify/auth';
 import { Auth } from 'aws-amplify';
 
 import DesktopNavigation  from '../components/DesktopNavigation';
