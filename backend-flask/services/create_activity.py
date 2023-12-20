@@ -1,6 +1,8 @@
 import uuid
 from datetime import datetime, timedelta, timezone
 
+from lib.db import pool, print_sql_err
+
 
 class CreateActivity:
   def run(message, user_handle, ttl):
@@ -71,8 +73,10 @@ class CreateActivity:
         cur = conn.cursor()
         cur.excecute(sql)
         conn.commit()
-      except Exception as error:
-        print(error)
+      except Exception as err:
+        print_sql_err(err)
+
+        
 
 
 

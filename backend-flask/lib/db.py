@@ -17,7 +17,7 @@ def query_wrap_array(template):
   """
   return sql
 
-def print_psycopg2_exception(err):
+def print_sql_err(err):
     # get details about the exception
     err_type, err_obj, traceback = sys.exc_info()
 
