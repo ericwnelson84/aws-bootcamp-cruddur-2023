@@ -26,8 +26,7 @@ class Db:
   def init_pool(self):
     connection_url = os.getenv("CONNECTION_URL")
     self.pool = ConnectionPool(connection_url)
-  # we want to commit data such as an insert
-  # be sure to check for RETURNING in all uppercases
+
   def print_params(self,params):
     blue = '\033[94m'
     no_color = '\033[0m'
@@ -119,7 +118,7 @@ class Db:
     print ("psycopg traceback:", traceback, "-- type:", err_type)
 
     # print the pgcode and pgerror exceptions
-    print ("pgerror:", err.pgerror)
-    print ("pgcode:", err.pgcode, "\n")
+    # print ("pgerror:", err.pgerror)
+    # print ("pgcode:", err.pgcode, "\n")
 
 db = Db()
