@@ -28,10 +28,11 @@ class Ddb:
       }
     }
     print('query-params:',query_params)
+    print(query_params)
     # query the table
     response = client.query(**query_params)
     items = response['Items']
-    print("item", items)
+    
 
     results = []
     for item in items:
