@@ -189,6 +189,7 @@ def data_create_message():
   print(TextColors.RED + f"message group uuid: {message_group_uuid}" + TextColors.RESET)
   user_receiver_handle = request.json.get('handle',None)
   print(TextColors.GREEN + f"User receiver handle: {user_receiver_handle}" + TextColors.RESET)
+  # user_receiver_handle = "andrewbrown"
   message = request.json['message']
   print(TextColors.GREEN + f"Message: {message}" + TextColors.RESET)
   access_token = cognito_jwt_token.extract_access_token(request.headers)
