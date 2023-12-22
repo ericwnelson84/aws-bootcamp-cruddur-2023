@@ -184,6 +184,7 @@ def data_create_message():
     cognito_user_id = claims['sub']
     if message_group_uuid == None:
       # Create for the first time
+      print("No existing message group id")
       model = CreateMessage.run(
         mode="create",
         message=message,
