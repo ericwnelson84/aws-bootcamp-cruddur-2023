@@ -3,6 +3,15 @@ from flask import request
 from flask_cors import CORS, cross_origin
 import os
 
+class TextColors:
+    RESET = '\033[0m'
+    RED = '\033[91m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    BLUE = '\033[94m'
+    PURPLE = '\033[95m'
+    CYAN = '\033[96m'
+
 from services.users_short import *
 from services.home_activities import *
 from services.notifications_activities import *
@@ -14,6 +23,7 @@ from services.message_groups import *
 from services.messages import *
 from services.create_message import CreateMessage
 from services.show_activity import *
+
 # xray
 from aws_xray_sdk.core import xray_recorder
 from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
@@ -147,6 +157,8 @@ def data_message_groups():
     app.logger.debug(e)
     return {}, 401
 
+
+
 @app.route("/api/messages/<string:message_group_uuid>", methods=['GET'])
 def data_messages(message_group_uuid):
   access_token = cognito_jwt_token.extract_access_token(request.headers)
@@ -169,12 +181,16 @@ def data_messages(message_group_uuid):
     app.logger.debug(e)
     return {}, 401
 
+
 @app.route("/api/messages", methods=['POST','OPTIONS'])
 @cross_origin()
 def data_create_message():
   message_group_uuid   = request.json.get('message_group_uuid',None)
+  print(TextColors.RED + f"message group uuid: {message_group_uuid}" + TextColors.RESET)
   user_receiver_handle = request.json.get('handle',None)
+  print(TextColors.GREEN + f"User receiver handle: {user_receiver_handle}" + TextColors.RESET)
   message = request.json['message']
+  print(TextColors.GREEN + f"Message: {message}" + TextColors.RESET)
   access_token = cognito_jwt_token.extract_access_token(request.headers)
   try:
     claims = cognito_jwt_token.verify(access_token)

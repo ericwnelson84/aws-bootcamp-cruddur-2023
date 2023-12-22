@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+
+import boto3
+import os
+import sys
+from app import app
+import colorama
+
+class TextColors:
+    RESET = '\033[0m'
+    RED = '\033[91m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    BLUE = '\033[94m'
+    PURPLE = '\033[95m'
+    CYAN = '\033[96m'
+
+# current_path = os.path.dirname(os.path.abspath(__file__))
+# parent_path = os.path.abspath(os.path.join(current_path, '..'))
+# sys.path.append(parent_path)
+from lib.db import db
+
+with app.app_context():
+    sql = db.template('users','create_message_users')
+
+    users = db.query_array_json(sql,{
+    'cognito_user_id': "a211056e-5bb2-4424-8ae7-c1f97050b876",
+    'user_receiver_handle': "andrewbrown"
+    })
+
+    print("USERS =-=-=-=-==")
+    print(users)
+
+    my_user    = next((item for item in users if item["kind"] == 'sender'), None)
+    other_user = next((item for item in users if item["kind"] == 'recv')  , None)
+
+    print(TextColors.GREEN + f"My user: {my_user}" + TextColors.RESET)
+    print(TextColors.GREEN + f"Other user: {other_user}" + TextColors.RESET)
+

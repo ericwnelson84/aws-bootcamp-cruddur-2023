@@ -11,6 +11,8 @@ class CreateMessage:
       'data': None
     }
 
+
+
     if (mode == "update"):
       if message_group_uuid == None or len(message_group_uuid) < 1:
         model['errors'] = ['message_group_uuid_blank']
@@ -46,11 +48,14 @@ class CreateMessage:
         'user_receiver_handle': rev_handle
       })
       print("USERS =-=-=-=-==")
+
       print(users)
+
 
       my_user    = next((item for item in users if item["kind"] == 'sender'), None)
       other_user = next((item for item in users if item["kind"] == 'recv')  , None)
       # other_user = {'uuid': 'f43b8efd-5fee-44c4-8d98-09ee3d131ca3', 'display_name': 'Wanna Nelson', 'handle': 'nana', 'kind': 'receiver'}
+
 
       print("USERS=[my-user]==")
       print(my_user)
