@@ -50,6 +50,7 @@ class CreateMessage:
 
       my_user    = next((item for item in users if item["kind"] == 'sender'), None)
       other_user = next((item for item in users if item["kind"] == 'recv')  , None)
+      # other_user = {'uuid': 'f43b8efd-5fee-44c4-8d98-09ee3d131ca3', 'display_name': 'Wanna Nelson', 'handle': 'nana', 'kind': 'receiver'}
 
       print("USERS=[my-user]==")
       print(my_user)
