@@ -1,1 +1,11 @@
-gp env AWS_COGNITO_USER_POOL_ID="us-east-1_0rHWvUTwI"
+aws logs create-log-group --log-group-name "/cruddur/fargate-cluster"
+
+aws logs put-retention-policy --log-group-name "/cruddur/fargate-cluster" --retention-in-days 1
+
+aws ecs create-cluster \
+--cluster-name cruddur \
+--service-connect-defaults namespace=cruddur
+
+aws ecr create-repository \
+  --repository-name cruddur-python \
+  --image-tag-mutability MUTABLE
