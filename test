@@ -9,3 +9,5 @@ aws ecs create-cluster \
 aws ecr create-repository \
   --repository-name cruddur-python \
   --image-tag-mutability MUTABLE
+
+  aws iam create-role --role-name CruddurServiceExecutionRole --assume-role-policy-document file://aws/policies/service-execution-policy.json
