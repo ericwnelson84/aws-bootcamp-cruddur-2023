@@ -1,7 +1,8 @@
-aws ecs register-task-definition --cli-input-json file://aws/task-definitions/backend-flask.json
+aws ecs execute-command  \
+--region us-east-1 \
+--cluster cruddur \
+--task 0b593dd912894c9595fd24dea6d52395 \ 
+--container backend-flask \
+--command "/bin/bash" \
+--interactive
 
-aws ec2 authorize-security-group-ingress \
-  --group-id sg-0681be456d4d7b053 \
-  --protocol tcp \
-  --port 80 \
-  --cidr 0.0.0.0/0
