@@ -1,8 +1,1 @@
-aws ecs execute-command  \
---region us-east-1 \
---cluster cruddur \
---task 0b593dd912894c9595fd24dea6d52395 \ 
---container backend-flask \
---command "/bin/bash" \
---interactive
-
+aws ecs execute-command --region us-east-1 --cluster cruddur --task 901edb2068b34371aabec781edb519f8 --container backend-flask --command "/bin/bash" --interactive
