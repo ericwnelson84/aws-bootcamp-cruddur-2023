@@ -1,19 +1,7 @@
-aws logs create-log-group --log-group-name "cruddur"
+aws ecs register-task-definition --cli-input-json file://aws/task-definitions/backend-flask.json
 
-aws logs put-retention-policy --log-group-name "cruddur" --retention-in-days 1
-
-aws ecs create-cluster \
---cluster-name cruddur \
---service-connect-defaults namespace=cruddur
-
-aws ecr create-repository \
-  --repository-name cruddur-python \
-  --image-tag-mutability MUTABLE
-
-  aws iam create-role --role-name CruddurServiceExecutionRole --assume-role-policy-document file://aws/policies/service-execution-policy.json
-
-
-
-aws iam create-role --role-name CruddurServiceExecutionPolicy --assume-role-policy-document file://aws/policies/service-assume-role-execution-policy.json
-
-aws iam put-role-policy --policy-name CruddurServiceExecutionPolicy --role-name CruddurServiceExecutionRole --policy-document file://aws/policies/service-execution-policy.json
+aws ec2 authorize-security-group-ingress \
+  --group-id sg-0681be456d4d7b053 \
+  --protocol tcp \
+  --port 80 \
+  --cidr 0.0.0.0/0
