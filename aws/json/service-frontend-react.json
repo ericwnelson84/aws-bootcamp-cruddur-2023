@@ -1,0 +1,37 @@
+{
+    "cluster": "cruddur",
+    "launchType": "FARGATE",
+    "desiredCount": 1,
+    "enableECSManagedTags": true,
+    "enableExecuteCommand": true,
+    "networkConfiguration": {
+      "awsvpcConfiguration": {
+        "assignPublicIp": "ENABLED",
+        "securityGroups": [
+          "sg-0681be456d4d7b053"
+        ],
+        "subnets": [
+            "subnet-04b1163e8330b22f9",
+            "subnet-030fd1589d3cda9e2",
+            "subnet-05589a844e7794bab",
+            "subnet-073360d5d27c006d6",
+            "subnet-068b045114215e908",
+            "subnet-0bfd06d373e6bbe36"
+        ]
+      }
+    },
+    "propagateTags": "SERVICE",
+    "serviceName": "frontend-react-js",
+    "taskDefinition": "frontend-react-js",
+    "serviceConnectConfiguration": {
+      "enabled": true,
+      "namespace": "cruddur",
+      "services": [
+        {
+          "portName": "frontend-react-js",
+          "discoveryName": "frontend-react-js",
+          "clientAliases": [{"port": 3000}]
+        }
+      ]
+    }
+  }
