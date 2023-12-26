@@ -7,7 +7,7 @@ BUILD_PATH=$(dirname $ABS_PATH)
 # PROJECT_PATH=$(dirname $BIN_PATH)
 # echo $BUILD_PATH
 FRONTEND_REACT_JS_PATH=$BUILD_PATH/frontend-react-js
-# echo $FRONTEND_REACT_JS_PATH
+echo $FRONTEND_REACT_JS_PATH
 
 
 docker build \
@@ -18,4 +18,4 @@ docker build \
 --build-arg REACT_APP_CLIENT_ID="5b6ro31g97urk767adrbrdj1g5" \
 -t frontend-react-js \
 -f "$FRONTEND_REACT_JS_PATH/Dockerfile.prod" \
-"$FRONTEND_REACT_JS_PATH/.".
+"$FRONTEND_REACT_JS_PATH/."
