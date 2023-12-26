@@ -6,16 +6,16 @@ BUILD_PATH=$(dirname $ABS_PATH)
 # BIN_PATH=$(dirname $DOCKER_PATH)
 # PROJECT_PATH=$(dirname $BIN_PATH)
 # echo $BUILD_PATH
-BACKEND_FLASK_PATH=$BUILD_PATH/backend-flask
-echo $BACKEND_FLASK_PATH
+FRONTEND_REACT_JS_PATH=$BUILD_PATH/frontend-react-js
+# echo $FRONTEND_REACT_JS_PATH
 
 
-# docker build \
-# --build-arg REACT_APP_BACKEND_URL="https://4567-$GITPOD_WORKSPACE_ID.$GITPOD_WORKSPACE_CLUSTER_HOST" \
-# --build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
-# --build-arg REACT_APP_AWS_COGNITO_REGION="$AWS_DEFAULT_REGION" \
-# --build-arg REACT_APP_AWS_USER_POOLS_ID="ca-central-1_CQ4wDfnwc" \
-# --build-arg REACT_APP_CLIENT_ID="5b6ro31g97urk767adrbrdj1g5" \
-# -t frontend-react-js \
-# -f Dockerfile.prod \
-# .
+docker build \
+--build-arg REACT_APP_BACKEND_URL="https://4567-$GITPOD_WORKSPACE_ID.$GITPOD_WORKSPACE_CLUSTER_HOST" \
+--build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_COGNITO_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_USER_POOLS_ID="ca-central-1_CQ4wDfnwc" \
+--build-arg REACT_APP_CLIENT_ID="5b6ro31g97urk767adrbrdj1g5" \
+-t frontend-react-js \
+-f "$FRONTEND_REACT_JS_PATH/Dockerfile.prod" \
+"$FRONTEND_REACT_JS_PATH/.".
