@@ -7,7 +7,7 @@
     "loadBalancers": [
         {
             "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:088478797243:targetgroup/cruddur-frontend-react-js/b0ef2ae83727c1dd",
-            "containerName": "backend-flask",
+            "containerName": "frontend-react-js",
             "containerPort": 3000
         }
       ],

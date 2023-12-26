@@ -1,5 +1,5 @@
 docker build \
---build-arg REACT_APP_BACKEND_URL="https://4567-$GITPOD_WORKSPACE_ID.$GITPOD_WORKSPACE_CLUSTER_HOST" \
+--build-arg REACT_APP_BACKEND_URL="http://cruddur-alb-432838301.us-east-1.elb.amazonaws.com:4567" \
 --build-arg REACT_APP_AWS_PROJECT_REGION="us-east-1" \
 --build-arg REACT_APP_AWS_COGNITO_REGION="us-east-1" \
 --build-arg REACT_APP_AWS_USER_POOLS_ID="us-east-1_0rHWvUTwI" \
