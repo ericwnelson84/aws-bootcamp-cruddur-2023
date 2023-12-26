@@ -1,18 +1,14 @@
 #! /usr/bin/bash
 
 if [ -z "$1" ]; then
-  echo "No TASK_ID argument supplied eg ./bin/ecs/connect-to-service "
+  echo "No TASK_ID argument supplied eg ./bin/ecs/connect-to-frontend "
   exit 1
-else 
-    TASK_ID=$1
 fi
 
-if [ -z "$2"  ]; then
-  echo "No container name provided "
-  CONTAINER_NAME="backend-flask"
-else
-  CONTAINER_NAME=$2
-fi
+TASK_ID=$1
 
-aws ecs execute-command --region us-east-1 --cluster cruddur --task $TASK_ID --container $CONTAINER_NAME --command "/bin/bash" --interactive
+CONTAINER_NAME=frontend-react-js
+
+
+aws ecs execute-command --region us-east-1 --cluster cruddur --task $TASK_ID --container $CONTAINER_NAME --command "/bin/sh" --interactive
 
