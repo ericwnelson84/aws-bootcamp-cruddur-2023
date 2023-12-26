@@ -1,0 +1,14 @@
+#! /usr/bin/bash
+
+if [ -z "$1" ]; then
+  echo "No TASK_ID argument supplied eg ./bin/ecs/connect-to-service "
+  exit 1
+else 
+    TASK_ID=$1
+fi
+
+CONTAINER_NAME=backend-flask
+
+
+aws ecs execute-command --region us-east-1 --cluster cruddur --task $TASK_ID --container $CONTAINER_NAME --command "/bin/bash" --interactive
+

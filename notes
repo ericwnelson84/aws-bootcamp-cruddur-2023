@@ -3,3 +3,4 @@ aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --usernam
 aws ecs register-task-definition --cli-input-json file://aws/task-definitions/backend-flask.json
 
 aws ecs create-service --cli-input-json file://aws/json/service-backend-flask.json
+
