@@ -7,7 +7,9 @@ BUILD_PATH=$(dirname $ABS_PATH)
 # PROJECT_PATH=$(dirname $BIN_PATH)
 # echo $BUILD_PATH
 BACKEND_FLASK_PATH=$BUILD_PATH/backend-flask
-echo $BACKEND_FLASK_PATH
+# echo $BACKEND_FLASK_PATH
 
 
-# docker build -f Dockerfile.prod -t backend-flask-prod .
+docker build \
+-f "$BACKEND_FLASK_PATH/Dockerfile.prod" \
+-t backend-flask-prod "$BACKEND_FLASK_PATH/." 
