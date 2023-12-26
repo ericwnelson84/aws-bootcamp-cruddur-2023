@@ -1,0 +1,5 @@
+#! /usr/bin/bash
+
+aws ecs describe-task-definition --task-definition frontend-react-js
+
+aws ecs update-service --cluster cruddur --service frontend-react-js --task-definition frontend-react-js:latest --force-new-deployment
