@@ -191,7 +191,7 @@ def data_messages(message_group_uuid):
 def data_create_message():
   message_group_uuid   = request.json.get('message_group_uuid',None)
   print(TextColors.RED + f"message group uuid: {message_group_uuid}" + TextColors.RESET)
-  user_receiver_handle = request.json.get('handle',None)
+  user_receiver_handle = request.json.get('user_receiver_handle',None)
   print(TextColors.GREEN + f"User receiver handle: {user_receiver_handle}" + TextColors.RESET)
   # user_receiver_handle = "andrewbrown"
   message = request.json['message']
