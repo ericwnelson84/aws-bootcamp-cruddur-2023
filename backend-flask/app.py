@@ -12,6 +12,8 @@ class TextColors:
     PURPLE = '\033[95m'
     CYAN = '\033[96m'
 
+
+
 from services.users_short import *
 from services.home_activities import *
 from services.notifications_activities import *
