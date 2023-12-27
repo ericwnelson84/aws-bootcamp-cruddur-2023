@@ -10,9 +10,7 @@ BUILD_PATH=$(dirname $ABS_PATH)
 # DOCKER_PATH=$(dirname $BUILD_PATH)
 # BIN_PATH=$(dirname $DOCKER_PATH)
 # PROJECT_PATH=$(dirname $BIN_PATH)
-# echo $BUILD_PATH
 BACKEND_FLASK_PATH=$BUILD_PATH/backend-flask
-# echo $BACKEND_FLASK_PATH
 # schema_path="$(realpath .)/db/schema.sql"
 
 schema_path="$BACKEND_FLASK_PATH/db/schema.sql"
