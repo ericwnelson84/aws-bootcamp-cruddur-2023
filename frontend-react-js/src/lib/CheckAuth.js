@@ -1,6 +1,6 @@
 import { Auth } from 'aws-amplify';
 
-export const getAccessToken = async () => {
+export async function getAccessToken() {
   Auth.currentSession()
   .then((cognito_user_session) => {
     console.log('cognito_user_session',cognito_user_session);
@@ -10,7 +10,7 @@ export const getAccessToken = async () => {
   .catch((err) => console.log(err));
 };
 
-export const checkAuth = async (setUser) => {
+export async function checkAuth(setUser) {
   Auth.currentAuthenticatedUser({
     // Optional, By default is false. 
     // If set to true, this call will send a 
