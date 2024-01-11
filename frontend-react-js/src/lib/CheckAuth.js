@@ -8,7 +8,7 @@ const getAccessToken = async () => {
     return localStorage.getItem("access_token")
   })
   .catch((err) => console.log(err));
-}
+};
 
 const checkAuth = async (setUser) => {
   Auth.currentAuthenticatedUser({
