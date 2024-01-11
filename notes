@@ -8,6 +8,10 @@ aws ecs create-service --cli-input-json file://aws/json/service-backend-flask.js
 How to set GIPOD IP address
 GITPOD_IP=$(curl ifconfig.me)
 
+docker network list
+docker network rm nameofnetwork
+socker network inspect nameofnetwork
+
 # docker run -rm \
 # -p 4567:4567 \
 # -e AWS_ENDPOINT_URL="http://dynamodb-local:8000" \

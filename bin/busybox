@@ -2,6 +2,6 @@
 
 docker run --rm \
   --network cruddur-net \
-  --publish 3000:3000 \
+  --publish 1000:1000 \
   -it busybox
 
