@@ -27,8 +27,8 @@ from services.create_message import CreateMessage
 from services.show_activity import *
 
 # xray
-from aws_xray_sdk.core import xray_recorder
-from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+# from aws_xray_sdk.core import xray_recorder
+# from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
 
 # Cloudwatch logs with watchtower
 import watchtower
@@ -54,8 +54,8 @@ LOGGER.addHandler(cw_handler)
 # LOGGER.info('another test log')
 
 # xray
-xray_url = os.getenv("AWS_XRAY_URL")
-xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
+# xray_url = os.getenv("AWS_XRAY_URL")
+# xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
 
 from lib.cognito_jwt_token import CognitoJwtToken, TokenVerifyError
 
@@ -85,7 +85,7 @@ cognito_jwt_token = CognitoJwtToken(
 )
 
 # xray
-XRayMiddleware(app, xray_recorder)
+# XRayMiddleware(app, xray_recorder)
 # For Honeycomb telemetry below. Initialize automatic instrumentation with Flask
 FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
