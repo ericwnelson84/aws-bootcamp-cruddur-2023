@@ -55,8 +55,6 @@ networks:
   default:
     driver: bridge
     name: cruddur-net
-
-
 volumes:
   db:
     driver: local
