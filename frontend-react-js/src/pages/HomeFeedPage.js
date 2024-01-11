@@ -20,7 +20,7 @@ export default function HomeFeedPage() {
   const loadData = async () => {
     try {
       const backend_url = `${process.env.REACT_APP_BACKEND_URL}/api/activities/home`
-      const access_token = await getAccessToken
+      const access_token = await getAccessToken()
       console.log('access token', access_token)
       const res = await fetch(backend_url, {
         headers: {
