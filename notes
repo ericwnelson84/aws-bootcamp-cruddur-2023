@@ -40,3 +40,13 @@ aws sts get-caller-identity
 # -env AWS_COGNITO_USER_POOL_ID="${AWS_COGNITO_USER_POOL_ID}" \
 # -env AWS_COGNITO_USER_POOL_CLIENT_ID="5b6ro31g97urk767adrbrdj1g5" \   
 # -it backend-flask-prod
+
+docker build \
+--build-arg REACT_APP_BACKEND_URL="https://api.cruddur.info" \
+--build-arg REACT_APP_AWS_PROJECT_REGION="us-east-1" \
+--build-arg REACT_APP_AWS_COGNITO_REGION="us-east-1" \
+--build-arg REACT_APP_AWS_USER_POOLS_ID="us-east-1_0rHWvUTwI" \
+--build-arg REACT_APP_CLIENT_ID="5omog06nf6leemb00vjpilr3b4" \
+-t frontend-react-js \
+-f Dockerfile.prod \
+.

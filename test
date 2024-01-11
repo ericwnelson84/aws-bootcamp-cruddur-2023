@@ -1,9 +1,13 @@
-docker build \
---build-arg REACT_APP_BACKEND_URL="https://api.cruddur.info" \
---build-arg REACT_APP_AWS_PROJECT_REGION="us-east-1" \
---build-arg REACT_APP_AWS_COGNITO_REGION="us-east-1" \
---build-arg REACT_APP_AWS_USER_POOLS_ID="us-east-1_0rHWvUTwI" \
---build-arg REACT_APP_CLIENT_ID="5omog06nf6leemb00vjpilr3b4" \
--t frontend-react-js \
--f Dockerfile.prod \
-.
+#!/usr/bin/env python3
+
+import boto3
+import sys
+
+# Configuring Logger to Use CloudWatch
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+# cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
+LOGGER.addHandler(console_handler)
+# LOGGER.addHandler(cw_handler)
+LOGGER.info('another test log')
