@@ -8,6 +8,7 @@ tasks:
       unzip awscliv2.zip
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
+      source "$THEIA_WORKSPACE_ROOT/bin/ecr/login"
   - name: postgres
     before: |
       curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
@@ -19,11 +20,11 @@ tasks:
       source "$THEIA_WORKSPACE_ROOT/bin/rds/rds-update-sg-rule"
   - name: react-js
     before: |
-      ./bin/env/generate-env-frontend"
+      ruby "$THEIA_WORKSPACE_ROOT/bin/env/generate-env-frontend"
       cd frontend-react-js && npm i
   - name: flask
     before: |
-      ./bin/env/generate-env-backend"
+      ruby "$THEIA_WORKSPACE_ROOT/bin/env/generate-env-backend"
       cd backend-flask
       pip install -r requirements.txt
   - name: fargate
