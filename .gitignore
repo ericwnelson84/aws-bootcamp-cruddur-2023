@@ -6,3 +6,5 @@ backend-flask.env
 frontend-react-js.env
 
 *.env
+
+node_modules
