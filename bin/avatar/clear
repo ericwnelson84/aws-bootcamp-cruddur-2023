@@ -1,0 +1,10 @@
+#! /usr/bin/bash
+
+ABS_PATH=$(readlink -f "0")
+PARENT_PATH=$(dirname $ABS_PATH)
+PHOTO_PATH=$PARENT_PATH/bin/avatar/files/data.jpg
+
+# echo $SERVERLESS_PROJECT_PATH
+
+aws s3 rm "s3://ewn-cruddur-uploaded-avatars/data.jpg"
+aws s3 rm "s3://assets.$DOMAIN_NAME/avatars/data.jpg"

@@ -69,7 +69,7 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
   }
 
   createBucket(bucketName: string): s3.IBucket {
-    const logicalName: string = "AssetsBucket";
+    const logicalName: string = "UploadsBucket";
     const bucket = new s3.Bucket(this, logicalName , {
       bucketName: bucketName,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
@@ -103,8 +103,8 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
   createS3NotifyToLambda(prefix: string, lambda: lambda.IFunction, bucket: s3.IBucket): void {
     const destination = new s3n.LambdaDestination(lambda);
       bucket.addEventNotification(s3.EventType.OBJECT_CREATED_PUT,
-      destination,
-      {prefix: prefix}
+      destination//
+      // {prefix: prefix}
     )
   }
 
