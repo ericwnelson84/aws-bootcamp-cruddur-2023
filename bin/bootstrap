@@ -1,0 +1,19 @@
+#! /usr/bin/bash
+set -e # stop if it fails at any point
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="bootstrap"
+printf "${CYAN}==== ${LABEL}${NO_COLOR}\n"
+
+bin_path="$(realpath .)/bin"
+
+# echo $bin_path
+# BUILD_PATH=$(dirname $ABS_PATH)
+# DOCKER_PATH=$(dirname $BUILD_PATH)
+# BIN_PATH=$(dirname $DOCKER_PATH)
+# PROJECT_PATH=$(dirname $BIN_PATH)
+
+source "$bin_path/db/setup"
+python "$bin_path/ddb/schema-load"
+python "$bin_path/ddb/seed"
