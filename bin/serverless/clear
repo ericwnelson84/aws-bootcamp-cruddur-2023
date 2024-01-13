@@ -7,4 +7,4 @@ PHOTO_PATH=$PARENT_PATH/bin/serverless/files/data.jpg
 # echo $SERVERLESS_PROJECT_PATH
 
 aws s3 rm "s3://assets.$DOMAIN_NAME/avatars/original/data.jpg"
-aws s3 rm "s3://assets.$DOMAIN_NAME/avatars/processed/data.png"
+aws s3 rm "s3://assets.$DOMAIN_NAME/avatars/processed/data.jpg"
