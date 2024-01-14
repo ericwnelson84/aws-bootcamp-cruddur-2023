@@ -117,7 +117,7 @@ export default function ProfileForm(props) {
 
   if (props.popped === true) {
     return (
-      <div className="popup_form_wrap" onClick={close}>
+      <div className="popup_form_wrap profile_popup" onClick={close}>
         <form 
           className='profile_form popup_form'
           onSubmit={onsubmit}
