@@ -159,7 +159,7 @@ model = {
 db = Db()
 
 sql = db.template('users','show')
-results = db.query_object_json(sql,{'handle': "bayko"})
+results = db.query_object_json(sql,{'handle': "Nelly"})
 # model['data'] = results
 
 print(results)
