@@ -14,15 +14,11 @@ from lib.db import db
 
 def get_last_successful_run():
   sql = """
-  SELECT
-      coalesce(
-      (SELECT last_successful_run
-      FROM public.schema_information
-      LIMIT 1),
-      '000000000000000000') as last_succesful_run
+    SELECT last_successful_run
+    FROM public.schema_information
+    LIMIT 1
   """
   return int(db.query_value(sql,{},verbose=False))
-
 
 def set_last_successful_run(value):
   sql = """
@@ -52,3 +48,5 @@ for migration_file in migration_files:
       mod.migration.migrate()
       timestamp = str(time.time()).replace(".","")
       last_successful_run = set_last_successful_run(timestamp)
+
+      
