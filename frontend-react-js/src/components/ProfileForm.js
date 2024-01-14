@@ -132,7 +132,7 @@ export default function ProfileForm(props) {
             </div>
           </div>
           <div className="popup_content">
-            
+          <div className="profile_popup upload">Avatar Upload</div>
           <input type="file" name="avatarupload" onChange={s3upload} />
 
             <div className="field display_name">
@@ -140,6 +140,7 @@ export default function ProfileForm(props) {
               <input
                 type="text"
                 placeholder="Display Name"
+                className="textarea"
                 value={displayName}
                 onChange={display_name_onchange} 
               />
