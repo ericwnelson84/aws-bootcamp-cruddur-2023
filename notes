@@ -6,6 +6,8 @@ aws ecs create-service --cli-input-json file://aws/json/service-backend-flask.js
 
 cdk bootstrap "aws://088478797243/us-east-1"
 
+bundle exec ruby function.rb
+
 export AWS_ACCESS_KEY_ID=""
 export AWS_SECRET_ACCESS_KEY=""
 export AWS_DEFAULT_REGION=us-east-1
