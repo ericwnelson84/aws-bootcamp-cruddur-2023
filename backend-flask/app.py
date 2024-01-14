@@ -27,6 +27,8 @@ from services.create_message import CreateMessage
 from services.show_activity import *
 from services.update_profile import *
 
+from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
+
 # xray
 # from aws_xray_sdk.core import xray_recorder
 # from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
@@ -57,8 +59,6 @@ LOGGER.info('another test log')
 # xray
 # xray_url = os.getenv("AWS_XRAY_URL")
 # xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
-
-from lib.cognito_jwt_token import CognitoJwtToken, TokenVerifyError
 
 # Honeycomb -----
 from opentelemetry import trace
@@ -137,7 +137,7 @@ def init_rollbar():
 
 @app.route("/api/message_groups", methods=['GET'])
 def data_message_groups():
-  access_token = cognito_jwt_token.extract_access_token(request.headers)
+  access_token = extract_access_token(request.headers)
   try:
     claims = cognito_jwt_token.verify(access_token)
     # authenicatied request
@@ -159,7 +159,7 @@ def data_message_groups():
 
 @app.route("/api/messages/<string:message_group_uuid>", methods=['GET'])
 def data_messages(message_group_uuid):
-  access_token = cognito_jwt_token.extract_access_token(request.headers)
+  access_token = extract_access_token(request.headers)
   try:
     claims = cognito_jwt_token.verify(access_token)
     # authenicatied request
@@ -190,7 +190,7 @@ def data_create_message():
   # user_receiver_handle = "andrewbrown"
   message = request.json['message']
   print(TextColors.GREEN + f"Message: {message}" + TextColors.RESET)
-  access_token = cognito_jwt_token.extract_access_token(request.headers)
+  access_token = extract_access_token(request.headers)
   try:
     claims = cognito_jwt_token.verify(access_token)
     # authenicatied request
@@ -225,7 +225,7 @@ def data_create_message():
 
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
-  access_token = cognito_jwt_token.extract_access_token(request.headers)
+  access_token = extract_access_token(request.headers)
   try:
     claims = cognito_jwt_token.verify(access_token)
     # authenticated request
@@ -310,7 +310,7 @@ def data_update_profile():
   try:
     claims = cognito_jwt_token.verify(access_token)
     cognito_user_id = claims['sub']
-    UpdateProfile.run(
+    model = UpdateProfile.run(
       cognito_user_id=cognito_user_id,
       bio=bio,
       display_name=display_name
