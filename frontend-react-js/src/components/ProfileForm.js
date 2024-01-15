@@ -3,9 +3,6 @@ import React from "react";
 import process from 'process';
 import {getAccessToken} from 'lib/CheckAuth';
 
-
-
-
 export default function ProfileForm(props) {
   const [bio, setBio] = React.useState('');
   const [displayName, setDisplayName] = React.useState('');
@@ -28,12 +25,13 @@ export default function ProfileForm(props) {
         method: "POST",
         body: JSON.stringify(json),
         headers: {
-          'Origin': process.env.REACT_APP_FRONTEND_URL,
+          'Origin': "https://3000-ericwnelson-awsbootcamp-krsx63j5g18.ws-us107.gitpod.io",
           'Authorization': `Bearer ${access_token}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         }
       })
+      console.log("res", res)
       let data = await res.json();
       if (res.status === 200) {
         return data.url
@@ -55,6 +53,7 @@ export default function ProfileForm(props) {
     const fileparts = filename.split('.')
     const extension = fileparts[fileparts.length-1]
     const presignedurl = await s3uploadkey(extension)
+    console.log("PRE-SIGNED_URL", presignedurl)
     try {
       console.log('s3upload')
       const res = await fetch(presignedurl, {
