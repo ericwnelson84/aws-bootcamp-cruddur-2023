@@ -15,7 +15,7 @@ export default function ProfileForm(props) {
   const s3uploadkey = async (extension)=> {
     console.log('ext',extension)
     try {
-      const gateway_url = "https://5yhlu0cfjb.execute-api.us-east-1.amazonaws.com/avatars/key_upload"
+      const gateway_url = `${process.env.REACT_APP_API_GATEWAY_ENDPOINT_URL}/avatars/key_upload`
       await getAccessToken()
       const access_token = localStorage.getItem("access_token")
       const json = {
@@ -25,7 +25,7 @@ export default function ProfileForm(props) {
         method: "POST",
         body: JSON.stringify(json),
         headers: {
-          'Origin': "https://3000-ericwnelson-awsbootcamp-krsx63j5g18.ws-us107.gitpod.io",
+          'Origin': process.env.REACT_APP_FRONTEND_URL,
           'Authorization': `Bearer ${access_token}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
