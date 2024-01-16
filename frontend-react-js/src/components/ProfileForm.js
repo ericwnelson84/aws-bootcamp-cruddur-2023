@@ -60,7 +60,7 @@ export default function ProfileForm(props) {
     try {
       console.log('s3upload')
       const res = await fetch(presignedurl, {
-        method: "PUT",
+        method: "POST",
         body: file,
         headers: {
           'Content-Type': type
