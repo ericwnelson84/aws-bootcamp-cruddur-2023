@@ -21,7 +21,7 @@ export default function ProfileForm(props) {
       const json = {
         extension: extension
       }
-      onsole.log('gateway URL',gateway_url)
+      console.log('gateway URL',gateway_url)
       console.log("API URL", process.env.REACT_APP_API_GATEWAY_ENDPOINT_URL)
       console.log("FRONT END URL", process.env.REACT_APP_FRONTEND_URL)
       const res = await fetch(gateway_url, {
