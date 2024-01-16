@@ -10,14 +10,19 @@ def handler(event:, context:)
     { 
       headers: {
         "Access-Control-Allow-Headers": "*, Authorization",
-        "Access-Control-Allow-Origin": "https://3000-ericwnelson-awsbootcamp-krsx63j5g18.ws-us107.gitpod.io",
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "OPTIONS,GET,POST"
       },
       statusCode: 200
     }
   else
-    token = event['headers']['authorization'].split(' ')[1]
-    puts({step: 'presignedurl', access_token: token}.to_json)
+    # puts({event: 'event data display', event: event}.to_json)
+    # header = event['headers']
+    # puts({headers: 'headers', header: header}.to_json)
+    # authorization = event['headers']['authorization']
+    # puts({headers: 'authorization', authorization: authorization}.to_json)
+    token = event['headers']['authorization']
+    puts({step: 'set presignedurl', access_token: token}.to_json)
 
     body_hash = JSON.parse(event["body"])
     extension = body_hash["extension"]
@@ -38,7 +43,7 @@ def handler(event:, context:)
     { 
       headers: {
         "Access-Control-Allow-Headers": "*, Authorization",
-        "Access-Control-Allow-Origin": "https://3000-ericwnelson-awsbootcamp-krsx63j5g18.ws-us107.gitpod.io",
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "OPTIONS,GET,POST"
       },
       statusCode: 200, 

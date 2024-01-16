@@ -29,7 +29,7 @@ export default function ProfileForm(props) {
         body: JSON.stringify(json),
         headers: {
           'Origin': process.env.REACT_APP_FRONTEND_URL,
-          'Authorization': `Bearer ${access_token}`,
+          'Authorization': access_token,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         }
@@ -60,7 +60,7 @@ export default function ProfileForm(props) {
     try {
       console.log('s3upload')
       const res = await fetch(presignedurl, {
-        method: "POST",
+        method: "PUT",
         body: file,
         headers: {
           'Content-Type': type
