@@ -23,6 +23,7 @@ Parameters:
     Default: CrdNet
   CertificateArn:
     Type: String
+    Default: arn:aws:acm:us-east-1:088478797243:certificate/d704f33a-3ae7-498f-ae1c-8571f309a097"
   #Frontend ------
   FrontendPort:
     Type: Number

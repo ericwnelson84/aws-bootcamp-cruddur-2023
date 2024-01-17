@@ -12,10 +12,12 @@ cfn-lint $CFN_PATH
 # STACK_NAME=$(cfn-toml key deploy.stack_name -t $CONFIG_PATH)
 
 aws cloudformation deploy \
-  --stack-name "Cruddur" \
+  --stack-name "CrdNet" \
   --s3-bucket "cfn-artifacts-ewn" \
   --s3-prefix networking \
   --region us-east-1 \
   --template-file "$CFN_PATH" \
+  --tags group=cruddur-network \
   --no-execute-changeset \
   --capabilities CAPABILITY_NAMED_IAM
+  
