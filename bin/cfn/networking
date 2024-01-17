@@ -5,7 +5,7 @@ CFN_PATH="/workspace/aws-bootcamp-cruddur-2023/aws/cfn/networking/template.yaml"
 # CONFIG_PATH="/workspace/aws-bootcamp-cruddur-2023/aws/cfn/networking/config.toml"
 echo $CFN_PATH
 
-# cfn-lint $CFN_PATH
+cfn-lint $CFN_PATH
 
 # BUCKET=$(cfn-toml key deploy.bucket -t $CONFIG_PATH)
 # REGION=$(cfn-toml key deploy.region -t $CONFIG_PATH)

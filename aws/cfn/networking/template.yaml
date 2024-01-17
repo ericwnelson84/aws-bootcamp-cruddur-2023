@@ -29,7 +29,6 @@ Parameters:
   Az1:
     Type: AWS::EC2::AvailabilityZone::Name
     Default: us-east-1a
-
   Az2:
     Type: AWS::EC2::AvailabilityZone::Name
     Default: us-east-1b
