@@ -10,5 +10,11 @@ TASK_ID=$1
 CONTAINER_NAME=backend-flask
 
 
-aws ecs execute-command --region us-east-1 --cluster cruddur --task $TASK_ID --container $CONTAINER_NAME --command "/bin/bash" --interactive
+aws ecs execute-command
+ --region us-east-1 \
+ --cluster cruddur-cluster \
+ --task $TASK_ID \
+ --container $CONTAINER_NAME \
+ --command "/bin/bash" \
+ --interactive
 
