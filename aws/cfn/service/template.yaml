@@ -61,7 +61,7 @@ Parameters:
     Default: 'arn:aws:ssm:us-east-1:088478797243:parameter/cruddur/backend-flask/AWS_SECRET_ACCESS_KEY'
   SecretsConnectionUrl:
     Type: String
-    Default: 'arn:aws:ssm:us-east-1:0884787972434:parameter/cruddur/backend-flask/CONNECTION_URL'
+    Default: 'arn:aws:ssm:us-east-1:088478797243:parameter/cruddur/backend-flask/CONNECTION_URL'
   SecretsRollbarAccessToken:
     Type: String
     Default: 'arn:aws:ssm:us-east-1:088478797243:parameter/cruddur/backend-flask/ROLLBAR_ACCESS_TOKEN'
