@@ -61,7 +61,7 @@ Parameters:
     Default: "/api/health-check"
   BackendHealthCheckPort:
     Type: String
-    Default: 80
+    Default: traffic-port
   BackendHealthCheckProtocol:
     Type: String
     Default: HTTP
