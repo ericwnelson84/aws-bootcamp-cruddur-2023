@@ -12,7 +12,7 @@ CONTAINER_NAME=backend-flask
 
 aws ecs execute-command
  --region us-east-1 \
- --cluster cruddur-cluster \
+ --cluster CrdClusterFargateCluster \
  --task $TASK_ID \
  --container $CONTAINER_NAME \
  --command "/bin/bash" \
