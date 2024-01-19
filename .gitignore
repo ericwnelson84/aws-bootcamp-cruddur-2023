@@ -8,3 +8,5 @@ frontend-react-js.env
 *.env
 
 node_modules
+
+build.toml
