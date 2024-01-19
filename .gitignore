@@ -10,3 +10,4 @@ frontend-react-js.env
 node_modules
 
 build.toml
+packaged.yaml
