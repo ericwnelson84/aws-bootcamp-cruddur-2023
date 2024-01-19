@@ -11,3 +11,4 @@ node_modules
 
 build.toml
 packaged.yaml
+tmp/*
