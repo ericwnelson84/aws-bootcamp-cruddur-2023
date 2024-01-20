@@ -6,7 +6,7 @@ require 'dotenv'
 env_path = "/workspace/aws-bootcamp-cruddur-2023/sync.env"
 Dotenv.load(env_path)
 
-puts "== configuration"
+puts "======= configuration ================"
 puts "aws_default_region:   #{ENV["AWS_DEFAULT_REGION"]}"
 puts "s3_bucket:            #{ENV["SYNC_S3_BUCKET"]}"
 puts "distribution_id:      #{ENV["SYNC_CLOUDFRONT_DISTRUBTION_ID"]}"
