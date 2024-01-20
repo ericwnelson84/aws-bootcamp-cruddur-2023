@@ -4,6 +4,6 @@ region = 'us-east-1'
 stack_name = 'CrdFrontend'
 
 [parameters]
-CertificateArn = 'arn:aws:acm:us-east-1:387543059434:certificate/50147d36-9d63-4b8f-9ea0-c51fa9e35cbe'
+CertificateArn = 'arn:aws:acm:us-east-1:088478797243:certificate/d704f33a-3ae7-498f-ae1c-8571f309a097'
 WwwBucketName = 'www.cruddur.info'
 RootBucketName = 'cruddur.info'
