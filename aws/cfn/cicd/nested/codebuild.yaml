@@ -24,7 +24,6 @@ Parameters:
     Default: 5
   BuildSpec:
     Type: String
-    Default: 'buildspec.yaml'
   ArtifactBucketName:
     Type: String
 Resources:
