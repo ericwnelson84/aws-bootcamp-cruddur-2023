@@ -12,6 +12,7 @@ BUILD_PATH=$(dirname $ABS_PATH)
 # PROJECT_PATH=$(dirname $BIN_PATH)
 BACKEND_FLASK_PATH=$BUILD_PATH/backend-flask
 # schema_path="$(realpath .)/db/schema.sql"
+PROD_CONNECTION_URL=postgresql://cruddurroot:Engineer1!@cruddur-instance.cvih73rfc0b3.us-east-1.rds.amazonaws.com:5432/cruddur
 
 schema_path="$BACKEND_FLASK_PATH/db/schema.sql"
 
