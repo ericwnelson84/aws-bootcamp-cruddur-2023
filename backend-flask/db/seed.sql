@@ -4,7 +4,7 @@ VALUES
   ('Andrew Brown','andrew@exampro.co' , 'andrewbrown' ,'MOCK'),
   ('Eric Nelson','ericwnelson84@gmail.com' , 'Nelly' ,'MOCK'),
   ('Andrew Bayko','bayko@exampro.co' , 'bayko' ,'MOCK'),
-  ('Wanna Nelson','sakulprom1982@gmail.com' , 'nana' ,'MOCK'),
+  ('Wanna Sakulprom','sakulprom1982@gmail.com' , 'Nana' ,'MOCK'),
   ('Londo Mollari', 'lmollari@centari.com','londo','MOCK');
 
 
