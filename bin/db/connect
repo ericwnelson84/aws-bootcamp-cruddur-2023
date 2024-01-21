@@ -1,5 +1,7 @@
 #! /usr/bin/bash
 
+PROD_CONNECTION_URL=postgresql://cruddurroot:Engineer1!@cruddur-instance.cvih73rfc0b3.us-east-1.rds.amazonaws.com:5432/cruddur
+echo $PROD_CONNECTION_URL
 
 if [ "$1" = "prod" ]; then
   echo "Running in production mode"
