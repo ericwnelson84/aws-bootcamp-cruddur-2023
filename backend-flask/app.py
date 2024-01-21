@@ -27,7 +27,7 @@ from services.create_message import CreateMessage
 from services.show_activity import *
 from services.update_profile import *
 
-from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError, jwt_required
+from lib.cognito_jwt_token import jwt_required
 
 # xray
 # from aws_xray_sdk.core import xray_recorder
@@ -225,8 +225,6 @@ def data_create_message():
 
 
 
-
-
 def default_home_feed(e):
   app.logger.debug("Unauthenticated")
   # app.logger.debug(access_token)
@@ -239,8 +237,6 @@ def default_home_feed(e):
 def data_home():
   data = HomeActivities.run(cognito_user_id=g.cognito_user_id)
   return data, 200
-
-
 
 
 
