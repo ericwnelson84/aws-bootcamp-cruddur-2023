@@ -2,3 +2,8 @@
 bucket = 'cfn-artifacts-ewn'
 region = 'us-east-1'
 stack_name = 'CrdSrvBackendFlask'
+
+[parameters]
+EnvFrontendUrl = 'https://cruddur.info'
+EnvBackendUrl = 'https://api.cruddur.info'
+DDBMessageTable = 'CrdDdb-DynamoDBTable-S19P9M568A0B'
