@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import request
+from flask import request, g
 from flask_cors import CORS, cross_origin
 import os
 
@@ -27,7 +27,7 @@ from services.create_message import CreateMessage
 from services.show_activity import *
 from services.update_profile import *
 
-from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
+from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError, jwt_required
 
 # xray
 # from aws_xray_sdk.core import xray_recorder
@@ -223,24 +223,26 @@ def data_create_message():
     app.logger.debug(e)
     return {}, 401
 
-@app.route("/api/activities/home", methods=['GET'])
-def data_home():
-  access_token = extract_access_token(request.headers)
-  try:
-    claims = cognito_jwt_token.verify(access_token)
-    # authenticated request
-    # app.logger.debug(access_token)
-    # app.logger.debug(claims)
-    # app.logger.debug(claims['username'])
-    app.logger.debug("Authenticated")
-    data = HomeActivities.run(cognito_user_id=claims['username'])
-  except TokenVerifyError as e:
-    # unauthenticated request
-    app.logger.debug("Unauthenticated")
-    app.logger.debug(access_token)
-    app.logger.debug(e)
-    data = HomeActivities.run(cognito_user_id="")
+
+
+
+
+def default_home_feed(e):
+  app.logger.debug("Unauthenticated")
+  # app.logger.debug(access_token)
+  app.logger.debug(e)
+  data = HomeActivities.run()
   return data, 200
+
+@app.route("/api/activities/home", methods=['GET'])
+@jwt_required(on_error=default_home_feed)
+def data_home():
+  data = HomeActivities.run(cognito_user_id=g.cognito_user_id)
+  return data, 200
+
+
+
+
 
 @app.route("/api/activities/notifications", methods=['GET'])
 def data_notifications():
