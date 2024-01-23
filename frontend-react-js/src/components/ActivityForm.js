@@ -3,11 +3,13 @@ import React from "react";
 import process from 'process';
 import {ReactComponent as BombIcon} from './svg/bomb.svg';
 import { getAccessToken } from 'lib/CheckAuth';
+import FormErrors from 'components/FormErrors'
 
 export default function ActivityForm(props) {
   const [count, setCount] = React.useState(0);
   const [message, setMessage] = React.useState('');
   const [ttl, setTtl] = React.useState('7-days');
+  const [errors, setErrors] = React.useState([]);
 
   const classes = []
   classes.push('count')
@@ -42,9 +44,12 @@ export default function ActivityForm(props) {
         setTtl('7-days')
         props.setPopped(false)
       } else {
-        console.log(res)
+        console.log('error-data', data)
+        setErrors(data)
+        console.log(res, data)
       }
     } catch (err) {
+      setErrors([`generic_${res.status}`])
       console.log(err);
     }
   }
@@ -88,6 +93,7 @@ export default function ActivityForm(props) {
               <option value='1-hour'>1 hour </option>
             </select>
           </div>
+          <FormErrors errors={errors}/>
         </div>
       </form>
     );

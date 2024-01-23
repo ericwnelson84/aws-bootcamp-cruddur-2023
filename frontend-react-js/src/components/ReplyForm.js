@@ -55,8 +55,7 @@ export default function ReplyForm(props) {
         console.log(res, data)
       }
     } catch (err) {
-      setErrors(["generic_500"])
-
+      setErrors([`generic_${res.status}`])
       console.log(err);
     }
   }

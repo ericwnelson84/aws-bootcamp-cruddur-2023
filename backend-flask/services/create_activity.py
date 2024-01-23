@@ -38,7 +38,7 @@ class CreateActivity:
 
     if model['errors']:
       model['data'] = {
-        'handle':  user_handle,
+        'cognito_user_id':  cognito_user_id,
         'message': message
       }   
     else:
