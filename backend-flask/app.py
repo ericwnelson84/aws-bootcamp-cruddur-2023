@@ -118,7 +118,7 @@ def data_users_short(handle):
 @app.route("/api/activities/@<string:handle>", methods=['GET'])
 def data_handle(handle):
   model = UserActivities.run(handle)
-  return return_model(model)
+  return model_json(model)
 
 
 @app.route("/api/activities/search", methods=['GET'])
