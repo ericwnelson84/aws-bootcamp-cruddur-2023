@@ -3,8 +3,8 @@ import React from "react";
 import process from 'process';
 
 import ActivityContent  from 'components/ActivityContent';
-import { getAccessToken } from 'lib/CheckAuth';
 import FormErrors from 'components/FormErrors'
+import {post} from 'lib/Requests';
 
 export default function ReplyForm(props) {
   const [count, setCount] = React.useState(0);
@@ -19,52 +19,30 @@ export default function ReplyForm(props) {
 
   const onsubmit = async (event) => {
     event.preventDefault();
-    try {
-      const backend_url = `${process.env.REACT_APP_BACKEND_URL}/api/activities/${props.activity.uuid}/reply`
-      const access_token = await getAccessToken()
-      const res = await fetch(backend_url, {
-        method: "POST",
-        headers: {
-          'Authorization': `Bearer ${access_token}`,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          activity_uuid: props.activity.uuid,
-          message: message
-        }),
-      });
-      let data = await res.json();
-      if (res.status === 200) {
-        // add activity to the feed
-
-        let activities_deep_copy = JSON.parse(JSON.stringify(props.activities))
-        let found_activity = activities_deep_copy.find(function (element) {
-          return element.uuid ===  props.activity.uuid;
-        });
-        found_activity.replies.push(data)
-
-        props.setActivities(activities_deep_copy);
+    const url = `${process.env.REACT_APP_BACKEND_URL}/api/activities/${props.activity.uuid}/reply`
+    const payload_data = {
+      activity_uuid: props.activity.uuid,
+      message: message
+    }
+    post(url,payload_data,{
+      auth: true,
+      setErrors: setErrors,
+      success: function(data){
+        if (props.setReplies) {
+          props.setReplies(current => [data,...current]);
+        }
         // reset and close the form
         setCount(0)
         setMessage('')
         props.setPopped(false)
-      } else {
-        console.log('error-data', data)
-        setErrors(data)
-        console.log(res, data)
       }
-    } catch (err) {
-      setErrors([`generic_${res.status}`])
-      console.log(err);
-    }
+    })
   }
 
   const textarea_onchange = (event) => {
     setCount(event.target.value.length);
     setMessage(event.target.value);
   }
-
 
 
   let content;
