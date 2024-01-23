@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request, g
-from flask_cors import CORS, cross_origin
+from flask_cors import cross_origin
 import os
 
 from services.users_short import *
@@ -24,21 +24,6 @@ from lib.cloudwatch import init_cloudwatch
 from lib.honeycomb import init_honeycomb
 from lib.helpers import model_json
 
-# Cloudwatch logs with watchtower
-import watchtower
-import logging
-from time import strftime
-
-
-# Configuring Logger to Use CloudWatch
-LOGGER = logging.getLogger(__name__)
-LOGGER.setLevel(logging.DEBUG)
-console_handler = logging.StreamHandler()
-# cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
-LOGGER.addHandler(console_handler)
-# LOGGER.addHandler(cw_handler)
-LOGGER.info('another test log')
-
 
 app = Flask(__name__)
 
@@ -55,11 +40,6 @@ def model_json(model):
   else:
     return model['data'], 200
 
-@app.after_request
-def after_request(response):
-    timestamp = strftime('[%Y-%b-%d %H:%M]')
-    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
-    return response
 
 @app.route('/api/health-check')
 def health_check():
@@ -88,7 +68,6 @@ def data_messages(message_group_uuid):
       message_group_uuid=message_group_uuid
     )
   return model_json(model)
-
 
 
 @app.route("/api/messages", methods=['POST','OPTIONS'])
@@ -130,7 +109,6 @@ def default_home_feed(e):
 def data_home():
   data = HomeActivities.run(cognito_user_id=g.cognito_user_id)
   return data, 200
-
 
 
 @app.route("/api/activities/notifications", methods=['GET'])
