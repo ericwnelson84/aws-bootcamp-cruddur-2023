@@ -8,6 +8,7 @@ from flask import request, g
 import os
 from flask import current_app as app
 
+
 class FlaskAWSCognitoError(Exception):
   pass
 

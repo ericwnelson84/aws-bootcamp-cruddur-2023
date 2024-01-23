@@ -3,15 +3,6 @@ from flask import request, g
 from flask_cors import CORS, cross_origin
 import os
 
-class TextColors:
-    RESET = '\033[0m'
-    RED = '\033[91m'
-    GREEN = '\033[92m'
-    YELLOW = '\033[93m'
-    BLUE = '\033[94m'
-    PURPLE = '\033[95m'
-    CYAN = '\033[96m'
-
 
 
 from services.users_short import *
@@ -96,6 +87,12 @@ cors = CORS(
   expose_headers='Authorization',
   methods="OPTIONS,GET,HEAD,POST"
 )
+
+def return_model(model):
+  if model['errors'] is not None:
+    return model['errors'], 422
+  else:
+    return model['data'], 200
 
 @app.after_request
 def after_request(response):
@@ -214,10 +211,8 @@ def data_users_short(handle):
 @app.route("/api/activities/@<string:handle>", methods=['GET'])
 def data_handle(handle):
   model = UserActivities.run(handle)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+  return return_model(model)
+
 
 @app.route("/api/activities/search", methods=['GET'])
 def data_search():
