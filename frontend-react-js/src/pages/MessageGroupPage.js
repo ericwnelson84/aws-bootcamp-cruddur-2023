@@ -3,10 +3,10 @@ import React from "react";
 import { useParams } from 'react-router-dom';
 
 import {get} from 'lib/Requests';
-import {checkAuth} from 'lib/CheckAuth';+
+import {checkAuth} from 'lib/CheckAuth';
 
 import DesktopNavigation  from 'components/DesktopNavigation';
-import MessageGroupFeed from 'omponents/MessageGroupFeed';
+import MessageGroupFeed from 'components/MessageGroupFeed';
 import MessagesFeed from 'components/MessageFeed';
 import MessagesForm from 'components/MessageForm';
 
