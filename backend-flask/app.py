@@ -3,8 +3,6 @@ from flask import request, g
 from flask_cors import CORS, cross_origin
 import os
 
-
-
 from services.users_short import *
 from services.home_activities import *
 from services.notifications_activities import *
@@ -19,23 +17,17 @@ from services.show_activity import *
 from services.update_profile import *
 
 from lib.cognito_jwt_token import jwt_required
-
-# xray
-# from aws_xray_sdk.core import xray_recorder
-# from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+from lib.rollbar import init_rollbar
+from lib.xray import init_xray
+from lib.cors import init_cors
+from lib.cloudwatch import init_cloudwatch
+from lib.honeycomb import init_honeycomb
+from lib.helpers import model_json
 
 # Cloudwatch logs with watchtower
 import watchtower
 import logging
 from time import strftime
-
-# Rollbar
-from flask import got_request_exception
-from time import strftime
-import os
-import rollbar
-import rollbar.contrib.flask
-
 
 
 # Configuring Logger to Use CloudWatch
@@ -47,48 +39,17 @@ LOGGER.addHandler(console_handler)
 # LOGGER.addHandler(cw_handler)
 LOGGER.info('another test log')
 
-# xray
-# xray_url = os.getenv("AWS_XRAY_URL")
-# xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
-
-# Honeycomb -----
-from opentelemetry import trace
-from opentelemetry.instrumentation.flask import FlaskInstrumentor
-from opentelemetry.instrumentation.requests import RequestsInstrumentor
-from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-
-# Honeycomb. Initialize tracing and an exporter that can send data to Honeycomb
-provider = TracerProvider()
-processor = BatchSpanProcessor(OTLPSpanExporter())
-provider.add_span_processor(processor)
-trace.set_tracer_provider(provider)
-tracer = trace.get_tracer(__name__)
-
-
 
 app = Flask(__name__)
 
+init_xray(app)
+init_honeycomb(app)
+init_cors(app)
+with app.app_context():
+  g.rollbar = init_rollbar(app)
 
-# xray
-# XRayMiddleware(app, xray_recorder)
-# For Honeycomb telemetry below. Initialize automatic instrumentation with Flask
-FlaskInstrumentor().instrument_app(app)
-RequestsInstrumentor().instrument()
 
-frontend = os.getenv('FRONTEND_URL')
-backend = os.getenv('BACKEND_URL')
-origins = [frontend, backend]
-cors = CORS(
-  app, 
-  resources={r"/api/*": {"origins": origins}},
-  headers=['Content-Type', 'Authorization'], 
-  expose_headers='Authorization',
-  methods="OPTIONS,GET,HEAD,POST"
-)
-
-def return_model(model):
+def model_json(model):
   if model['errors'] is not None:
     return model['errors'], 422
   else:
@@ -110,31 +71,12 @@ def rollbar_test():
     rollbar.report_message('Hello World!', 'warning')
     return "Hello World!"
 
-@app.before_first_request
-def init_rollbar():
-    """init rollbar module"""
-    rollbar.init(
-        # access token
-        'be3e03c77ff34973a5873d9fe6630432',
-        # environment name
-        'production',
-        # server root directory, makes tracebacks prettier
-        root=os.path.dirname(os.path.realpath(__file__)),
-        # flask already sets up logging
-        allow_logging_basic_config=False)
-
-    # send exceptions from `app` to rollbar, using flask's signal system.
-    got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
-
 
 @app.route("/api/message_groups", methods=['GET'])
 @jwt_required()
 def data_message_groups():
   model = MessageGroups.run(cognito_user_id=g.cognito_user_id)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+  return model_json(model)
 
 
 
@@ -145,10 +87,7 @@ def data_messages(message_group_uuid):
       cognito_user_id=g.cognito_user_id,
       message_group_uuid=message_group_uuid
     )
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+  return model_json(model)
 
 
 
@@ -176,11 +115,7 @@ def data_create_message():
       message_group_uuid=message_group_uuid,
       cognito_user_id=g.cognito_user_id
     )
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
-
+  return model_json(model)
 
 
 def default_home_feed(e):
@@ -218,11 +153,7 @@ def data_handle(handle):
 def data_search():
   term = request.args.get('term')
   model = SearchActivities.run(term)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
-  return
+  return model_json(model)
 
 @app.route("/api/activities", methods=['POST','OPTIONS'])
 @cross_origin()
@@ -231,10 +162,7 @@ def data_activities():
   message = request.json['message']
   ttl = request.json['ttl']
   model = CreateActivity.run(message, g.cognito_user_id, ttl)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+  return model_json(model)
 
 
 @app.route("/api/activities/<string:activity_uuid>", methods=['GET'])
@@ -248,12 +176,7 @@ def data_activities_reply(activity_uuid):
   user_handle  = 'Nelly'
   message = request.json['message']
   model = CreateReply.run(message, user_handle, activity_uuid)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
-  return
-
+  return model_json(model)
 
 @app.route("/api/profile/update", methods=['POST','OPTIONS'])
 @cross_origin()
@@ -266,10 +189,7 @@ def data_update_profile():
     bio=bio,
     display_name=display_name
   )
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+  return model_json(model)
 
 
 
