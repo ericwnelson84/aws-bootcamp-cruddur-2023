@@ -19,7 +19,6 @@ export default function ActivityForm(props) {
     event.preventDefault();
     try {
       const backend_url = `${process.env.REACT_APP_BACKEND_URL}/api/activities`
-      // console.log('onsubmit payload', message)
       const access_token = await getAccessToken()
       const res = await fetch(backend_url, {
         method: "POST",
@@ -27,7 +26,6 @@ export default function ActivityForm(props) {
           'Authorization': `Bearer ${access_token}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-
         },
         body: JSON.stringify({
           message: message,
