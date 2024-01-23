@@ -3,11 +3,12 @@ import React from "react";
 import process from 'process';
 import {getAccessToken} from 'lib/CheckAuth';
 import FormErrors from 'components/FormErrors'
-import {post} from 'lib/Requests';
+import {put} from 'lib/Requests';
 
 export default function ProfileForm(props) {
   const [bio, setBio] = React.useState('');
   const [displayName, setDisplayName] = React.useState('');
+  const [errors, setErrors] = React.useState('');
 
   React.useEffect(()=>{
     setBio(props.profile.bio || '');
@@ -144,6 +145,7 @@ export default function ProfileForm(props) {
                 onChange={bio_onchange} 
               />
             </div>
+            <FormErrors errors={errors}/>
           </div>
         </form>
       </div>
