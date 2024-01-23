@@ -24,6 +24,8 @@ from lib.cloudwatch import init_cloudwatch
 from lib.honeycomb import init_honeycomb
 from lib.helpers import model_json
 
+from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+
 
 app = Flask(__name__)
 
