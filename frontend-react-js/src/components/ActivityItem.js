@@ -7,7 +7,6 @@ import ActivityActionRepost  from '../components/ActivityActionRepost';
 import ActivityActionLike  from '../components/ActivityActionLike';
 import ActivityActionShare  from '../components/ActivityActionShare';
 
-
 export default function ActivityItem(props) {
   const navigate = useNavigate()
 

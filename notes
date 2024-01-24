@@ -1,6 +1,8 @@
 
 aws cloudformation delete-stack --stack-name [StackName]
 
+ALTER TABLE public.users ADD COLUMN bio text;
+
 SELECT column_name, data_type
 FROM information_schema.columns
 WHERE table_name = 'activities' AND column_name = 'reply_to_activity_uuid';
