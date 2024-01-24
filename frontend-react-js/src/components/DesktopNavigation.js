@@ -17,12 +17,9 @@ export default function DesktopNavigation(props) {
 
   const load = async () => {
     const user = await props.user;
-    console.log("current user in DesktopNavigation.js:::", user)
     setHandle(user.handle)
-    console.log("current handle in DesktopNavigation.js:::", handle)
   }
   load();
-  console.log("Current USER (DesktopNaviagation Element)", props.user)
   // console.log("Current USER handle ", props.user[cognito_user_uuid])
   if (props.user) {
     button = <CrudButton setPopped={props.setPopped} />;
