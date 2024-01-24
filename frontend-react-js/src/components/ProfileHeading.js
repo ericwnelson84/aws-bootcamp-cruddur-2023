@@ -10,6 +10,7 @@ export default function ProfileHeading(props) {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
+  console.log('cognito user id :::', props.profile.cognito_user_uuid)
   return (
   <div className='activity_feed_heading profile_heading'>
     <div className='title'>{props.profile.display_name}</div>

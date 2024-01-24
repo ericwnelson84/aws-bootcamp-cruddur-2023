@@ -33,7 +33,8 @@ export default function UserFeedPage() {
       }
     })
   }
-
+  console.log("current profile", profile)
+  console.log("current user", user)
   React.useEffect(()=>{
     //prevents double call
     if (dataFetchedRef.current) return;

@@ -37,6 +37,7 @@ export default function HomeFeedPage() {
     checkAuth(setUser);
   }, [])
 
+  // console.log("current user handle:::", user)
   return (
     <article>
       <DesktopNavigation user={user} active={'home'} setPopped={setPopped} />
