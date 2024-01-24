@@ -27,14 +27,11 @@ export default function UserFeedPage() {
     get(url,{
       auth: false,
       success: function(data){
-        console.log('setprofile',data.profile)
         setProfile(data.profile)
         setActivities(data.activities)
       }
     })
   }
-  console.log("current profile", profile)
-  console.log("current user", user)
   React.useEffect(()=>{
     //prevents double call
     if (dataFetchedRef.current) return;

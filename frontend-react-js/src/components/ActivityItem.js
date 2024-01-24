@@ -16,7 +16,6 @@ export default function ActivityItem(props) {
     navigate(url)
     return false;
   }
-  console.log("cognito_user_uuid at ActivityFeed: ", props.cognito_user_uuid)
   const attrs = {}
   attrs.className = 'activity_item clickable'
   attrs.onClick = click

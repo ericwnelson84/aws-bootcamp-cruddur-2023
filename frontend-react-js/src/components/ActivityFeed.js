@@ -10,7 +10,6 @@ export default function ActivityFeed(props) {
     setId(user.cognito_user_uuid)
   }
   load();
-  console.log("cognito_user_uuid at ActivityFeed: ", cognito_user_uuid)
   if (props.activities.length === 0){
     content = <div className='activity_feed_primer'>
       <span>Nothing to see here yet</span>

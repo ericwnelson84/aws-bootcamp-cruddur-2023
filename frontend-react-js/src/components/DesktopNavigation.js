@@ -20,7 +20,6 @@ export default function DesktopNavigation(props) {
     setHandle(user.handle)
   }
   load();
-  // console.log("Current USER handle ", props.user[cognito_user_uuid])
   if (props.user) {
     button = <CrudButton setPopped={props.setPopped} />;
     profile = <ProfileInfo user={props.user} />;
