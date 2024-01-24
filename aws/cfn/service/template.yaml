@@ -70,7 +70,7 @@ Parameters:
     Default: 'arn:aws:ssm:us-east-1:088478797243:parameter/cruddur/backend-flask/OTEL_EXPORTER_OTLP_HEADERS'
   DDBMessageTable:
     Type: String
-    Default: cruddur-messages
+    Default: CrdDdb-DynamoDBTable-S19P9M568A0B
   
 Resources:
   FargateService:
