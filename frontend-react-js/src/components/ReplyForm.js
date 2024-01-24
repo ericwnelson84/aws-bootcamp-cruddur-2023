@@ -1,10 +1,10 @@
 import './ReplyForm.css';
 import React from "react";
 import process from 'process';
+import {post} from 'lib/Requests';
 
 import ActivityContent  from 'components/ActivityContent';
-import FormErrors from 'components/FormErrors'
-import {post} from 'lib/Requests';
+import FormErrors from 'components/FormErrors';
 
 export default function ReplyForm(props) {
   const [count, setCount] = React.useState(0);
@@ -44,7 +44,6 @@ export default function ReplyForm(props) {
     setMessage(event.target.value);
   }
 
-
   let content;
   if (props.activity){
     content = <ActivityContent activity={props.activity} />;
@@ -55,14 +54,13 @@ export default function ReplyForm(props) {
       props.setPopped(false)
     }
   }
-
   if (props.popped === true) {
     return (
       <div className="popup_form_wrap reply_popup" onClick={close}>
         <div className="popup_form">
           <div className="popup_heading">
             <div className="popup_title">
-            Reply to...
+              Reply to...
             </div>
           </div>
           <div className="popup_content">
@@ -83,7 +81,7 @@ export default function ReplyForm(props) {
                 <div className={classes.join(' ')}>{240-count}</div>
                 <button type='submit'>Reply</button>
               </div>
-              <FormErrors errors={errors}/>
+              <FormErrors errors={errors} />
             </form>
           </div>
         </div>
