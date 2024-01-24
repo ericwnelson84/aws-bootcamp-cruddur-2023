@@ -1,7 +1,8 @@
-flask==2.2.5
+flask
 flask-cors
 
 Flask-AWSCognito
+
 
 opentelemetry-api 
 opentelemetry-sdk 
@@ -21,3 +22,4 @@ psycopg[pool]
 boto3
 
 colorama
+

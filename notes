@@ -1,6 +1,19 @@
 
 aws cloudformation delete-stack --stack-name [StackName]
 
+ALTER TABLE public.users ADD COLUMN bio text;
+
+SELECT column_name, data_type
+FROM information_schema.columns
+WHERE table_name = 'activities' AND column_name = 'reply_to_activity_uuid';
+
+ALTER COLUMN reply_to_activity_uuid TYPE text USING reply_to_activity_uuid::text;
+
+ALTER TABLE activities
+ALTER COLUMN reply_to_activity_uuid TYPE integer USING reply_to_activity_uuid::integer;
+
+DELETE FROM activities WHERE message = "asdfasf ";
+
 zip -r build.zip build/
 
 gem install aws_s3_website_sync
