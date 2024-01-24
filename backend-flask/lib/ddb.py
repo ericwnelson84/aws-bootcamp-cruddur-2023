@@ -7,12 +7,13 @@ import botocore.exceptions
 
 class Ddb:
   def client():
-    endpoint_url = os.getenv("AWS_ENDPOINT_URL")
-    if endpoint_url:
-      attrs = { 'endpoint_url': endpoint_url }
-    else:
-      attrs = {}
-    dynamodb = boto3.client('dynamodb',**attrs)
+    # endpoint_url = os.getenv("AWS_ENDPOINT_URL")
+    # if endpoint_url:
+    #   attrs = { 'endpoint_url': endpoint_url }
+    # else:
+    #   attrs = {}
+    # dynamodb = boto3.client('dynamodb',**attrs)
+    dynamodb = boto3.client('dynamodb', region_name='us-east-1')
     return dynamodb
   def list_message_groups(client,my_user_uuid):
     year = str(datetime.now().year)
