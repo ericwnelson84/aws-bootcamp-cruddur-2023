@@ -15,6 +15,7 @@ from services.messages import *
 from services.create_message import CreateMessage
 from services.show_activity import *
 from services.update_profile import *
+from services.show_activity import ShowActivity
 
 from lib.cognito_jwt_token import jwt_required
 from lib.rollbar import init_rollbar
@@ -153,6 +154,12 @@ def data_activities_reply(activity_uuid):
   return model_json(model)
 
 
+@app.route("/api/activities/@<string:handle>/status/<string:activity_uuid>", methods=['GET'])
+def data_show_activity(handle,activity_uuid):
+  data = ShowActivity.run(activity_uuid)
+  return data, 200
+
+
 @app.route("/api/profile/update", methods=['POST','OPTIONS'])
 @cross_origin()
 @jwt_required()
@@ -165,6 +172,8 @@ def data_update_profile():
     display_name=display_name
   )
   return model_json(model)
+
+
 
 
 
