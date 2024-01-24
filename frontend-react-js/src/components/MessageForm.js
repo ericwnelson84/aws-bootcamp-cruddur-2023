@@ -2,8 +2,8 @@ import './MessageForm.css';
 import React from "react";
 import process from 'process';
 import { useParams } from 'react-router-dom';
-import FormErrors from 'components/FormErrors'
 import {post} from 'lib/Requests';
+import FormErrors from 'components/FormErrors';
 
 export default function ActivityForm(props) {
   const [count, setCount] = React.useState(0);
@@ -61,7 +61,7 @@ export default function ActivityForm(props) {
         <div className={classes.join(' ')}>{1024-count}</div>
         <button type='submit'>Message</button>
       </div>
-      <FormErrors errors={errors}/>
+      <FormErrors errors={errors} />
     </form>
   );
 }
