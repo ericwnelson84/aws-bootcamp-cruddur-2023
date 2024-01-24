@@ -40,9 +40,10 @@ for migration_file in migration_files:
   filename = os.path.basename(migration_file)
   module_name = os.path.splitext(filename)[0]
   match = re.match(r'^\d+', filename)
+  print(f"Module name: {module_name}")
   if match:
     file_time = int(match.group())
-    if last_successful_run < file_time:
-      mod = importlib.import_module(module_name)
-      mod.migration.migrate()
-      last_successful_run = set_last_successful_run(file_time)
+    # if last_successful_run < file_time:
+    mod = importlib.import_module(module_name)
+    mod.migration.migrate()
+    last_successful_run = set_last_successful_run(file_time)
