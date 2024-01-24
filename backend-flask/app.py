@@ -37,7 +37,6 @@ with app.app_context():
   g.rollbar = init_rollbar(app)
 
 
-
 @app.route('/api/health-check')
 def health_check():
   return {'success': True, 'ver': 1}, 200
@@ -119,7 +118,7 @@ def data_users_short(handle):
   return data, 200
 
 @app.route("/api/activities/@<string:handle>", methods=['GET'])
-def data_handle(handle):
+def data_users_activities(handle):
   model = UserActivities.run(handle)
   return model_json(model)
 
@@ -139,11 +138,10 @@ def data_activities():
   model = CreateActivity.run(message, g.cognito_user_id, ttl)
   return model_json(model)
 
-
-@app.route("/api/activities/<string:activity_uuid>", methods=['GET'])
-def data_show_activity(activity_uuid):
-  data = ShowActivity.run(activity_uuid=activity_uuid)
-  return data, 200
+# @app.route("/api/activities/<string:activity_uuid>", methods=['GET'])
+# def data_show_activity(activity_uuid):
+#   data = ShowActivity.run(activity_uuid=activity_uuid)
+#   return data, 200
 
 @app.route("/api/activities/<string:activity_uuid>/reply", methods=['POST','OPTIONS'])
 @cross_origin()

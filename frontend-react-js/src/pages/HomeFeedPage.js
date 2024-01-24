@@ -1,15 +1,14 @@
 import './HomeFeedPage.css';
 import React from "react";
 
-import DesktopNavigation from 'components/DesktopNavigation';
-import DesktopSidebar from 'components/DesktopSidebar';
+import DesktopNavigation  from 'components/DesktopNavigation';
+import DesktopSidebar     from 'components/DesktopSidebar';
 import ActivityFeed from 'components/ActivityFeed';
 import ActivityForm from 'components/ActivityForm';
 import ReplyForm from 'components/ReplyForm';
-import {checkAuth} from 'lib/CheckAuth';
 
-import FormErrors from 'components/FormErrors'
 import {get} from 'lib/Requests';
+import {checkAuth} from 'lib/CheckAuth';
 
 export default function HomeFeedPage() {
   const [activities, setActivities] = React.useState([]);
@@ -28,8 +27,7 @@ export default function HomeFeedPage() {
       }
     })
   }
-
-
+  
   React.useEffect(()=>{
     //prevents double call
     if (dataFetchedRef.current) return;
@@ -52,8 +50,6 @@ export default function HomeFeedPage() {
           activity={replyActivity} 
           popped={poppedReply} 
           setPopped={setPoppedReply} 
-          setActivities={setActivities} 
-          activities={activities} 
         />
         <div className='activity_feed'>
           <div className='activity_feed_heading'>
