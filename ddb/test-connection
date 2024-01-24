@@ -5,10 +5,10 @@ import boto3
 from botocore.exceptions import ClientError
 
 # Initialize a Boto3 DynamoDB client
-dynamodb = boto3.client('dynamodb', region_name='us-east-1')
+dynamodb = boto3.client('dynamodb', endpoint_url='https://dynamodb.us-east-1.amazonaws.com')
 
 # Specify the table name
-table_name = 'CrdDdb-DynamoDBTable-S19P9M568A0B'
+table_name = 'CrdDdb-DynamoDBTable-HAF3ROJCD1WK'
 
 try:
     # Attempt to describe the table
