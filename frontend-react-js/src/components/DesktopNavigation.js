@@ -3,14 +3,23 @@ import {ReactComponent as Logo} from './svg/logo.svg';
 import DesktopNavigationLink from '../components/DesktopNavigationLink';
 import CrudButton from '../components/CrudButton';
 import ProfileInfo from '../components/ProfileInfo';
+import React from "react";
+
+
 
 export default function DesktopNavigation(props) {
-
+  const [handle, setHandle] = React.useState([]);
   let button;
   let profile;
   let notificationsLink;
   let messagesLink;
   let profileLink;
+
+  const load = async () => {
+    const user = await props.user;
+    setHandle(user.handle)
+  }
+  load();
   if (props.user) {
     button = <CrudButton setPopped={props.setPopped} />;
     profile = <ProfileInfo user={props.user} />;
@@ -25,7 +34,7 @@ export default function DesktopNavigation(props) {
       handle="messages" 
       active={props.active} />
     profileLink = <DesktopNavigationLink 
-      url="/@Nelly" 
+      url={`/@${handle}`}
       name="Profile"
       handle="profile"
       active={props.active} />
