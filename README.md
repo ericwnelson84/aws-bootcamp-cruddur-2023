@@ -4,6 +4,10 @@
 
 - Application: Cruddur
 
+- Use pull request from main to prod branch to start the Codepipeline build and deply - This is for the backend container only
+- Use a custom ruby sync script to update the frontend code in s3. Use ./bin/frontend/sync script. Before running the sync script we need to build using ./bin/frontend/build script
+- Cloudformation used to build the custom VPC, cluster, Service, DB, and CICD
+
 
 ![Cruddur Graphic](_docs/assets/cruddur-banner.jpg)
 
