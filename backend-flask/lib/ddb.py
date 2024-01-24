@@ -4,6 +4,11 @@ from datetime import datetime, timedelta, timezone
 import uuid
 import os
 import botocore.exceptions
+import logging
+from botocore.exceptions import ClientError
+
+# # Enable Boto3 logging
+# boto3.set_stream_logger('', logging.DEBUG)
 
 class Ddb:
   def client():
@@ -13,7 +18,7 @@ class Ddb:
     # else:
     #   attrs = {}
     # dynamodb = boto3.client('dynamodb',**attrs)
-    dynamodb = boto3.client('dynamodb', region_name='us-east-1')
+    dynamodb = boto3.client('dynamodb', endpoint_url='https://dynamodb.us-east-1.amazonaws.com')
     return dynamodb
   def list_message_groups(client,my_user_uuid):
     year = str(datetime.now().year)
