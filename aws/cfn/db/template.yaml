@@ -71,7 +71,7 @@ Resources:
     # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html
     Type: AWS::RDS::DBInstance
     # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html
-    DeletionPolicy: 'Snapshot'
+    DeletionPolicy: 'Retain'
     # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatereplacepolicy.html
     UpdateReplacePolicy: 'Snapshot'
     Properties:
