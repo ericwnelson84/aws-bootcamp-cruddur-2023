@@ -1,4 +1,11 @@
 
+aws ecs list-tasks --cluster CrdClusterFargateCluster --service-name backend-flask # get task id first
+
+aws ecs describe-tasks --cluster CrdClusterFargateCluster --tasks 7cbbb9f331b0434ba4f9b5ba00993588
+
+aws ecs describe-container-instances --cluster CrdClusterFargateCluster --container-instances container-instance-id # this is for ECS with managed instances not fargate
+
+
 aws cloudformation delete-stack --stack-name [StackName]
 
 ALTER TABLE public.users ADD COLUMN bio text;
