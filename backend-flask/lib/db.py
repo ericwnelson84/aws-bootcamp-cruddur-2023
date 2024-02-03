@@ -33,13 +33,13 @@ class Db:
     no_color = '\033[0m'
     # print(f'{blue} SQL Params:{no_color}')
     for key, value in params.items():
-      # print(key, ":", value)
+      print(key, ":", value)
 
   def print_sql(self,title,sql,params={}):
     cyan = '\033[96m'
     no_color = '\033[0m'
-    # print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
-    # print(sql,params)
+    print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
+    print(sql,params)
   def query_commit(self,sql,params={},verbose=True):
     if verbose:
       self.print_sql('commit with returning',sql,params)

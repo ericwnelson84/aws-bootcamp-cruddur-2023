@@ -55,6 +55,7 @@ tasks:
       cd thumbing-serverless-cdk
       cp .env.example .env
       npm i
+      cd ..
 
 vscode:
   extensions:
