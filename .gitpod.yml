@@ -6,6 +6,7 @@ tasks:
       unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
       sudo ./sam-installation/install
       cd $THEIA_WORKSPACE_ROOT
+      clear
   - name: cfn
     init: |
       bundle update --bundler
@@ -14,6 +15,7 @@ tasks:
       gem install cfn-toml
       gem install aws_s3_website_sync
       gem install dotenv
+      clear
   - name: aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
@@ -24,6 +26,7 @@ tasks:
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
       source "$THEIA_WORKSPACE_ROOT/bin/ecr/login"
+      clear
   - name: postgres
     before: |
       curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
@@ -33,10 +36,12 @@ tasks:
     command: |
       export GITPOD_IP=$(curl ifconfig.me)
       source "$THEIA_WORKSPACE_ROOT/bin/rds/update-sg-rule"
+      clear
   - name: react-js
     before: |
       ruby "$THEIA_WORKSPACE_ROOT/bin/frontend/generate-env"
       cd frontend-react-js && npm i
+      clear
   - name: flask
     before: |
       ruby "$THEIA_WORKSPACE_ROOT/bin/env/generate-env-backend"
@@ -49,6 +54,7 @@ tasks:
       sudo dpkg -i session-manager-plugin.deb
       cd $THEIA_WORKSPACE_ROOT
       cd backend-flask
+      clear
   - name: cdk
     before: |
       npm install aws-cdk -g
@@ -56,6 +62,7 @@ tasks:
       cp .env.example .env
       npm i
       cd ..
+      clear
 
 vscode:
   extensions:

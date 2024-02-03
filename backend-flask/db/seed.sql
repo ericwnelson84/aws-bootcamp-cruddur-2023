@@ -2,9 +2,9 @@
 INSERT INTO public.users (display_name, email, handle, cognito_user_id)
 VALUES
   ('Andrew Brown','andrew@exampro.co' , 'andrewbrown' ,'MOCK'),
-  ('Eric Nelson','ericwnelson84@gmail.com' , 'Nelly' ,'MOCK'),
+  ('Eric Nelson','ericwnelson84@gmail.com' , 'nelly' ,'MOCK'),
   ('Andrew Bayko','bayko@exampro.co' , 'bayko' ,'MOCK'),
-  ('Wanna Sakulprom','sakulprom1982@gmail.com' , 'Nana' ,'MOCK'),
+  ('Wanna Sakulprom','sakulprom1982@gmail.com' , 'nana' ,'MOCK'),
   ('Londo Mollari', 'lmollari@centari.com','londo','MOCK');
 
 INSERT INTO public.activities (user_uuid, message, expires_at)
