@@ -16,8 +16,8 @@ class Db:
 
     green = '\033[92m'
     no_color = '\033[0m'
-    print("\n")
-    print(f'{green} Load SQL Template: {template_path} {no_color}')
+    # print("\n")
+    # print(f'{green} Load SQL Template: {template_path} {no_color}')
 
     with open(template_path, 'r') as f:
       template_content = f.read()
@@ -31,15 +31,15 @@ class Db:
   def print_params(self,params):
     blue = '\033[94m'
     no_color = '\033[0m'
-    print(f'{blue} SQL Params:{no_color}')
+    # print(f'{blue} SQL Params:{no_color}')
     for key, value in params.items():
-      print(key, ":", value)
+      # print(key, ":", value)
 
   def print_sql(self,title,sql,params={}):
     cyan = '\033[96m'
     no_color = '\033[0m'
-    print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
-    print(sql,params)
+    # print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
+    # print(sql,params)
   def query_commit(self,sql,params={},verbose=True):
     if verbose:
       self.print_sql('commit with returning',sql,params)

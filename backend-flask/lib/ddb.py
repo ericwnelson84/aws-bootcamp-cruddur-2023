@@ -33,8 +33,8 @@ class Ddb:
         ':pk': {'S': f"GRP#{my_user_uuid}"}
       }
     }
-    print('query-params:',query_params)
-    print(query_params)
+    # print('query-params:',query_params)
+    # print(query_params)
     # query the table
     response = client.query(**query_params)
     items = response['Items']
@@ -99,7 +99,7 @@ class Ddb:
       Item=record
     )
     # print the response
-    print(response)
+    # print(response)
     return {
       'message_group_uuid': message_group_uuid,
       'uuid': my_user_uuid,

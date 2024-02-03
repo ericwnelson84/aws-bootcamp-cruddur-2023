@@ -7,9 +7,9 @@ from flask import current_app as app
 
 ## XXX hack to make request data work with pyrollbar <= 0.16.3
 def _get_flask_request():
-    print("Getting flask request")
+    # print("Getting flask request")
     from flask import request
-    print("request:", request)
+    # print("request:", request)
     return request
 rollbar._get_flask_request = _get_flask_request
 
