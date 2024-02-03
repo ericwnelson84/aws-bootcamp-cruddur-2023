@@ -6,4 +6,4 @@ stack_name = 'CrdSrvBackendFlask'
 [parameters]
 EnvFrontendUrl = 'https://cruddur.info'
 EnvBackendUrl = 'https://api.cruddur.info'
-DDBMessageTable = 'CrdDdb-DynamoDBTable-HAF3ROJCD1WK'
+DDBMessageTable = 'CrdDdb-DynamoDBTable-1XP2RIF6G70MT'

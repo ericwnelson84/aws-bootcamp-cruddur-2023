@@ -8,7 +8,7 @@ from botocore.exceptions import ClientError
 dynamodb = boto3.client('dynamodb', endpoint_url='https://dynamodb.us-east-1.amazonaws.com')
 
 # Specify the table name
-table_name = 'CrdDdb-DynamoDBTable-HAF3ROJCD1WK'
+table_name = 'CrdDdb-DynamoDBTable-1XP2RIF6G70MT'
 
 try:
     # Attempt to describe the table
