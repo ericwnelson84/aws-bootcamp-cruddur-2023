@@ -9,6 +9,6 @@
 - Cloudformation used to build the custom VPC, cluster, Service, DB, and CICD
 
 
-![Cruddur Graphic](_docs/assets/cruddur-banner.jpg)
+![Cruddur Graphic](.jpg)
 
 
