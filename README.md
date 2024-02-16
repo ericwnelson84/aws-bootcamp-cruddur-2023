@@ -10,7 +10,7 @@
 - Use a custom ruby sync script to update the frontend code in s3. Use ./bin/frontend/sync script. Before running the sync script we need to build using ./bin/frontend/build script. It could take a few minutes for the cloudfront distribution to invalidate and update with the new code
 - Cloudformation used to build the custom VPC, cluster, Service, DB, and CICD
 
-
-![Cruddur Graphic](.jpg)
+![Cruddur Architecture](/docs/assets/cruddur-architecture.jpg)
+![Cruddur Graphic](/docs/assets/cruddur-screenshot.jpg)
 
 
