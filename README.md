@@ -12,5 +12,6 @@
 
 ![Cruddur Architecture](assets/cruddur-architecture.jpg)
 ![Cruddur Graphic](assets/cruddur-screenshot.jpg)
+![Cruddur Codepipeline](assets/cruddur-codepipeline.jpg)
 
 
