@@ -11,7 +11,11 @@
 - Cloudformation used to build the custom VPC, cluster, Service, DB, and CICD
 
 ![Cruddur Architecture](assets/cruddur-architecture.jpg)
+
 ![Cruddur Graphic](assets/cruddur-screenshot.jpg)
+
 ![Cruddur Codepipeline](assets/cruddur-codepipeline.jpg)
+
+![Cruddur buildspec](assets/cruddur-buildspec.jpg)
 
 
